@@ -5,7 +5,7 @@ header-img: img/home-bg.jpg
 email: hh178239456@gmail.com
 description: "聚焦报纸官方blog"
 keyword: ""
-url: "http://KodateMitsuru.github.io"              # your host, for absolute URL
+url: "http://www.2401focus.ml"              # your host, for absolute URL
 baseurl: "/"         # for example, '/blog' if your blog hosted on 'host/blog'
 
 
