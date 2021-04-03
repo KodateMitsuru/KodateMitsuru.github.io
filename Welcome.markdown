@@ -4,7 +4,7 @@ title:      "You're welcome"
 subtitle:   " \"hello\""
 date:       2021-04-03 22:24:00
 author:     "admin"
-header-img: "https://i.loli.net/2021/04/03/FWsj9P4tcqbmAUi.jpg"
+header-img: ""
 tags:
     - 欢迎
 ---
