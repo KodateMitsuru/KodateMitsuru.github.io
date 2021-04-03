@@ -1,10 +1,10 @@
 ---
 layout:     post
-title:      "Welcome to 2401focus"
+title:      "Welcome"
 subtitle:   " \"hello\""
 date:       2021-04-03 22:24:00
 author:     "admin"
-header-img: "img/post-bg-2015.jpg"
+header-img: "img/post-bg-2021.jpg"
 tags:
     - 欢迎
 ---
