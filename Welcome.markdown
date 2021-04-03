@@ -9,7 +9,6 @@ tags:
     - 欢迎
 ---
 
-> “Yeah It's on. ”
 
 
 # 欢迎
