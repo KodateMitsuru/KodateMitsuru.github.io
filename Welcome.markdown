@@ -4,7 +4,7 @@ title:      "Welcome"
 subtitle:   " \"hello\""
 date:       2021-04-03 22:24:00
 author:     "admin"
-header-img: "img/post-bg-2021.jpg"
+header-img: "img/post-bg-2021-hello.jpg"
 tags:
     - 欢迎
 ---
