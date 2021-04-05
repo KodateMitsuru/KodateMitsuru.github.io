@@ -4,7 +4,7 @@ title:      "第一期"
 subtitle:   " 01"
 date:       2021-04-04 23:02:00
 author:     "admin"
-header-img: "img/post-bg-2021-hello.jpg"
+header-img: "img/post-bg.jpg"
 tags:
     - 报纸
 ---
@@ -12,7 +12,6 @@ tags:
 
 
 # 第一期
-![007.jpg](https://i.loli.net/2021/04/04/lKyIXHJZatG7Mi9.jpg)
 ![001.jpg](https://i.loli.net/2021/04/04/Y2uUfCeJFXwlP5s.jpg)
 ![002.jpg](https://i.loli.net/2021/04/04/EcOPUsG6R2DkuzQ.jpg)
 ![003.jpg](https://i.loli.net/2021/04/04/6hjBDsXMTQt4vfS.jpg)
