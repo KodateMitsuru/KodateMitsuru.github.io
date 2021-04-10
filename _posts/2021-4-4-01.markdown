@@ -3,7 +3,7 @@ layout:     post
 title:      "第一期"
 subtitle:   " 01"
 date:       2021-04-04 23:02:00
-author:     "admin"
+author:     "KodateMitsuru"
 header-img: "img/post-bg.jpg"
 tags:
     - 报纸
