@@ -1,0 +1,17 @@
+- name: HOME
+  url: /
+  icon: home
+- name: CATEGORY
+  url: /pages/category.html
+  icon: "&#xe53b;"
+- name: TAGS
+  url: /pages/tags.html
+  icon: "&#xe893;"
+- name: FRIENDS
+  url: /pages/friends.html
+  icon: "&#xe8a3;"
+- name: EDITOR
+  url: /pages/editor.html
+  icon: "brush"
+- name: navSearch
+  switch: true
