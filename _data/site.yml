@@ -1,4 +1,4 @@
-head: 
+head:
    favicon: "https://ooo.0o0.ooo/2017/05/27/59294212bc16e.png" #  the favicon
    high_res_favicon: "https://ooo.0o0.ooo/2017/06/08/5939484dc618e.png" #  the favicon using high quality format
    apple_touch_icon: "https://ooo.0o0.ooo/2017/06/08/5939484dc618e.png" # the iOS Home button icon
@@ -8,15 +8,15 @@ uiux:
    android_chrome_color: "#eeeeee" #  the color of the Chrome address bar
    nprogress_color: "#29d" #  the color of the top loading progress bar
    nprogress_buffer: 200 # the top loading progress bar buffers
-   meng: false
+   meng: false # meng
 
-background: 
+background:
    purecolor: "#eeeeee" # the background color
 
-img: 
+img:
    avatar: "https://ooo.0o0.ooo/2017/05/26/5928368d409dd.png" # your avatar
 
-card: 
+card:
    card_shadow: 1 # card shadow (0-24), 0 is not displayed
    card_hoverable: false # When the hover to deepen the shadow
 
@@ -34,8 +34,8 @@ sns_share: # SNS Share Switch
 comment:
   used: "" # disqus,livere,gitment,valine
   # disqus config
-  disqus_shortname: "" # Your disqus 
-  disqus_button: true # disqus load button
+  disqus_shortname: "" # Your disqus
+  disqus_button: false # disqus load button
   disqus_proxy: false # # disqus proxy(Do not use)
   disqus_proxy_url: "" # (Do not use)
   disqus_api_key: "" # (Do not use)
@@ -54,13 +54,20 @@ comment:
 
 prism:
   themes: prism-okaidia
-  components: 
-    - bash 
-  plugins: 
+  components:
+    - bash
+  plugins:
+
+mathjax: true
 
 google_analytics: ""  # google analytics code
 
-lang: "en-US"  # lang
+baidu_site_verification: ""  # baidu site verification code
+google_site_verification: ""  # google search console verification code
+
+baidu_auto_push: false  # if you used baidu auto push to commit links
+
+lang: ""  # lang
 
 deploy: "" # if you used coding pages
 
