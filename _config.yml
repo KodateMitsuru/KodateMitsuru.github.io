@@ -1,8 +1,8 @@
-title: "Jekyll-Theme-MDUI"
-description: "A Jekyll theme based on MDUI"
+title: "聚焦"
+description: "For people"
 url: https://www.2401focus.ml/
 baseurl: ""
-author: "KeJun"
+author: "KodateMitsuru"
 paginate: 5
 paginate_path: "/blog/page:num/"
 
