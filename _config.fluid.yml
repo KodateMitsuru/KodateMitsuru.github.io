@@ -202,5 +202,5 @@ post:
     enable: true
     type: twikoo
 twikoo:
-  envId: https://twikoo-five-fawn.vercel.app
+  envId: https://comment.kodatemitsuru.ml/
 
