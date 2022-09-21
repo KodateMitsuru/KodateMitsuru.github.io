@@ -124,8 +124,6 @@ index:
       keys: ["hitokoto"]
 favicon: https://s2.loli.net/2022/09/21/9gU7ZMunrhPVJKk.jpg
 apple_touch_icon: https://s2.loli.net/2022/09/21/9gU7ZMunrhPVJKk.jpg
-post:
-  banner_img: https://s2.loli.net/2022/09/21/94t1HMhOaDmI2XV.jpg
 archive:
   banner_img: https://s2.loli.net/2022/09/21/94t1HMhOaDmI2XV.jpg
 category:
@@ -199,6 +197,7 @@ about:
   icons:
     - { class: "iconfont icon-github-fill", link: "https://github.com/kodatemitsuru", tip: "GitHub" }
 post:
+  banner_img: https://s2.loli.net/2022/09/21/94t1HMhOaDmI2XV.jpg
   comments:
     enable: true
     type: twikoo
