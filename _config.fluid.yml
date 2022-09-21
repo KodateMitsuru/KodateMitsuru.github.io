@@ -112,6 +112,7 @@ force_https: true
 navbar:
   blog_title: KodateMitsuru
 index:
+  banner_img: https://s2.loli.net/2022/09/21/94t1HMhOaDmI2XV.jpg
   slogan:
     enable: true
     text: 这是一条 Slogan
@@ -121,12 +122,76 @@ index:
       method: "GET"
       headers: {}
       keys: ["hitokoto"]
-about:
+favicon: https://s2.loli.net/2022/09/21/9gU7ZMunrhPVJKk.jpg
+apple_touch_icon: https://s2.loli.net/2022/09/21/9gU7ZMunrhPVJKk.jpg
+post:
+  banner_img: https://s2.loli.net/2022/09/21/94t1HMhOaDmI2XV.jpg
+archive:
+  banner_img: https://s2.loli.net/2022/09/21/94t1HMhOaDmI2XV.jpg
+category:
   enable: true
-  banner_img: /img/default.png
+  banner_img: https://s2.loli.net/2022/09/21/94t1HMhOaDmI2XV.jpg
+tag:
+  enable: true
+  banner_img: https://s2.loli.net/2022/09/21/94t1HMhOaDmI2XV.jpg
+page:
+  banner_img: https://s2.loli.net/2022/09/21/94t1HMhOaDmI2XV.jpg
+page404:
+  enable: true
+  banner_img: https://s2.loli.net/2022/09/21/94t1HMhOaDmI2XV.jpg
+links:
+  enable: true
+  banner_img: https://s2.loli.net/2022/09/21/94t1HMhOaDmI2XV.jpg
   banner_img_height: 60
   banner_mask_alpha: 0.3
-  avatar: /img/avatar.png
+  # 友链的成员项
+  # Member item of page
+  items:
+    - {
+      title: "Fluid Blog",
+      intro: "主题博客",
+      link: "https://hexo.fluid-dev.com/",
+      avatar: "/img/favicon.png"
+    }
+    - {
+      title: "Fluid Docs",
+      intro: "主题使用指南",
+      link: "https://hexo.fluid-dev.com/docs/",
+      avatar: "/img/favicon.png"
+    }
+    - {
+      title: "Fluid Repo",
+      intro: "主题 GitHub 仓库",
+      link: "https://github.com/fluid-dev/hexo-theme-fluid",
+      avatar: "/img/favicon.png"
+    }
+
+  # 当成员头像加载失败时，替换为指定图片
+  # When the member avatar fails to load, replace the specified image
+  onerror_avatar: /img/avatar.png
+
+  # 友链下方自定义区域，支持 HTML，可插入例如申请友链的文字
+  # Custom content at the bottom of the links
+  custom:
+    enable: false
+    content: '<hr><p>在下方留言申请加入我的友链，按如下格式提供信息：</p><ul><li>博客名：Fluid</li><li>简介：Fluid 主题官方博客</li><li>链接：https://hexo.fluid-dev.com</li><li>图片：https://hexo.fluid-dev.com/img/favicon.png</li></ul>'
+
+  # 评论插件
+  # Comment plugin
+  comments:
+    enable: false
+    # 指定的插件，需要同时设置对应插件的必要参数
+    # The specified plugin needs to set the necessary parameters at the same time
+    # Options: utterances | disqus | gitalk | valine | waline | changyan | livere | remark42 | twikoo | cusdis | giscus
+    type: disqus
+
+
+about:
+  enable: true
+  banner_img: https://s2.loli.net/2022/09/21/94t1HMhOaDmI2XV.jpg
+  banner_img_height: 60
+  banner_mask_alpha: 0.3
+  avatar: https://s2.loli.net/2022/09/21/9gU7ZMunrhPVJKk.jpg
   name: "KodateMitsuru"
   intro: "none"
   # 更多图标可从 https://hexo.fluid-dev.com/docs/icon/ 查找，`class` 代表图标的 css class，添加 `qrcode` 后，图标不再是链接而是悬浮二维码
@@ -139,3 +204,4 @@ post:
     type: twikoo
 twikoo:
   envId: https://twikoo-five-fawn.vercel.app
+
