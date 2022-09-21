@@ -14,7 +14,7 @@ jobs:
     - name: Build and Deploy
       uses: theme-keep/hexo-deploy-github-pages-action@master
       env:
-        PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        PERSONAL_TOKEN: ${{ secrets.TOKEN }}
 
         # The repository the action should deploy to.
         PUBLISH_REPOSITORY: KodateMitsuru/KodateMitsuru.github.io
