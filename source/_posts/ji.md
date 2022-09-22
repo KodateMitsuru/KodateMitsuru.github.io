@@ -3,7 +3,7 @@ title: 寄
 author:
 tags:
 categories:
-date: 2022/9/22下午6:02:47
+date: 2022/9/22 18:02:47
 ---
 
 live2d加载不出来，
