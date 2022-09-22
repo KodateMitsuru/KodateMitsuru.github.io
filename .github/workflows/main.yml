@@ -1,6 +1,8 @@
 name: Hexo Deploy GitHub Pages
-'on':
-  - workflow_dispatch
+on:
+  push:
+    branches:
+      - source
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
