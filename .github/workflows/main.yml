@@ -1,23 +1,15 @@
 name: Hexo Deploy GitHub Pages
-on:
-  push:
-    branches:
-      - source
+'on':
+  - workflow_dispatch
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    
     steps:
-    - name: Checkout
-      uses: actions/checkout@master
-
-    - name: Build and Deploy
-      uses: theme-keep/hexo-deploy-github-pages-action@master
-      env:
-        PERSONAL_TOKEN: ${{ secrets.TOKEN }}
-
-        # The repository the action should deploy to.
-        PUBLISH_REPOSITORY: KodateMitsuru/KodateMitsuru.github.io
-
-        # The branch the action should deploy to.
-        BRANCH: main
+      - name: Checkout
+        uses: actions/checkout@master
+      - name: Build and Deploy
+        uses: theme-keep/hexo-deploy-github-pages-action@master
+        env:
+          PERSONAL_TOKEN: ${{ secrets.TOKEN }}
+          PUBLISH_REPOSITORY: KodateMitsuru/KodateMitsuru.github.io
+          BRANCH: main
