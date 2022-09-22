@@ -1,0 +1,1 @@
+hexo.extend.injector.register('body_end', '<script src="/js/timecheck.js"></script>', 'post');
