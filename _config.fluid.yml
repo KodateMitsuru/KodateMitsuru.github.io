@@ -138,7 +138,7 @@ page404:
   enable: true
   banner_img: https://s2.loli.net/2022/09/21/94t1HMhOaDmI2XV.jpg
 links:
-  enable: true
+  enable: false
   banner_img: https://s2.loli.net/2022/09/21/94t1HMhOaDmI2XV.jpg
   banner_img_height: 60
   banner_mask_alpha: 0.3
@@ -198,6 +198,14 @@ about:
     - { class: "iconfont icon-github-fill", link: "https://github.com/kodatemitsuru", tip: "GitHub" }
 post:
   banner_img: https://s2.loli.net/2022/09/21/94t1HMhOaDmI2XV.jpg
+  math:
+    enable: true
+    specific: true
+    engine: katex
+  mermaid:
+    enable: true
+    specific: true
+    options:
   comments:
     enable: true
     type: twikoo
@@ -220,4 +228,22 @@ footer:
       <script src="/js/duration.js"></script>
     </div>
   '
-custom_css: //fastly.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css
+markdown:
+  plugins:
+    - "@traptitech/markdown-it-katex"
+custom_css: //lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css
+code:
+  copy_btn: true
+  highlight:
+    enable: true
+    line_number: true
+    lib: "highlightjs"
+    highlightjs:
+      style: 'Hybird'
+copyright:
+    enable: true
+
+    # CreativeCommons license
+    # Options: BY | BY-SA | BY-ND | BY-NC | BY-NC-SA | BY-NC-ND
+    license: 'BY-NC-SA'
+
