@@ -246,4 +246,7 @@ copyright:
     # CreativeCommons license
     # Options: BY | BY-SA | BY-ND | BY-NC | BY-NC-SA | BY-NC-ND
     license: 'BY-NC-SA'
-
+sitemap:
+    path: sitemap.xml
+    tag: false
+    category: false
