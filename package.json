@@ -15,7 +15,6 @@
     "@traptitech/markdown-it-katex": "^3.6.0",
     "hexo": "^6.3.0",
     "hexo-all-minifier": "^0.5.2",
-    "hexo-deployer-git": "^3.0.0",
     "hexo-generator-archive": "^1.0.0",
     "hexo-generator-category": "^1.0.0",
     "hexo-generator-index": "^2.0.0",
