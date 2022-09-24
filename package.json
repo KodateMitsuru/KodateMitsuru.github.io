@@ -8,9 +8,8 @@
     "deploy": "hexo deploy",
     "server": "hexo server"
   },
-  "hexo": {
-    "version": "5.4.2"
-  },
+
+
   "dependencies": {
     "@traptitech/markdown-it-katex": "^3.6.0",
     "hexo": "^6.3.0",
