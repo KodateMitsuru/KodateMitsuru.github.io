@@ -246,10 +246,6 @@ copyright:
     # CreativeCommons license
     # Options: BY | BY-SA | BY-ND | BY-NC | BY-NC-SA | BY-NC-ND
     license: BY-NC-SA
-sitemap:
-    path: sitemap.xml
-    tag: false
-    category: false
 web_analytics:  # 网页访问统计
   enable: true # 默认为false，启用网页统计改为true即可
   google: G-9RT9FXQTRD
