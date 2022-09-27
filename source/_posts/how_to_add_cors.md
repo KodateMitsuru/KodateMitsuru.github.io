@@ -86,17 +86,16 @@ app.listen(3000, () => {
     "test": "node index.js"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/KodateMitsuru/cors.git"
+    "type": "",
+    "url": ""
   },
   "author": "",
-  "license": "ISC",
+  "license": "",
   "bugs": {
-    "url": "https://github.com/KodateMitsuru/cors/issues"
+    "url": ""
   },
-  "homepage": "https://github.com/KodateMitsuru/cors#readme",
+  "homepage": "",
   "dependencies": {
-    "connect-timeout": "^1.9.0",
     "cors": "^2.8.5",
     "express": "^4.18.1",
     "http-proxy-middleware": "^2.0.6"
