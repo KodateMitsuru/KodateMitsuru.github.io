@@ -4,8 +4,7 @@ author:
 tags:cors,vercel,api,nodejs
 categories:建站
 date: 2022/9/27下午8:49:29
---------------------------
-
+---
 # 1 说在最前
 
 因为个人是高中生，没有资金来源，所以想干什么都先将费用问题放在第一上。
@@ -137,9 +136,7 @@ app.listen(3000, () => {
 
 vercel免费判断每月500GB
 
-
-
 ### 脚注
 
-> [^1]感谢大佬开源，仓库地址[live2d-widget](https://github.com/stevenjoezhang/live2d-widget),[live2d_api](https://github.com/fghrsh/live2d_api)
-
+[^1]感谢大佬开源，仓库地址[live2d-widget](https://github.com/stevenjoezhang/live2d-widget),[live2d_api](https://github.com/fghrsh/live2d_api)
+---------------------------------------------------------------------------------------------------------------------------------------------
