@@ -43,18 +43,7 @@ render_drafts: false
 post_asset_folder: false
 relative_link: false
 future: true
-highlight:
-  enable: true
-  line_number: true
-  auto_detect: false
-  tab_replace: ''
-  wrap: true
-  hljs: false
-prismjs:
-  enable: false
-  preprocess: true
-  line_number: true
-  tab_replace: ''
+
 
 # Home page setting
 # path: Root path for your blogs index page. (default = '')
@@ -237,10 +226,15 @@ code:
   highlight:
     enable: true
     line_number: true
-    lib: "prismjs"
-    prismjs:
-      style: 'okaidia'
-      preprocess: false
+    lib: "highlightjs"
+    highlightjs:
+      # 在链接中挑选 style 填入
+      # Select a style in the link
+      # See: https://highlightjs.org/static/demo/
+      style: "Github Gist"
+
+      # 是否根据 style 改变代码背景色（如果 style 是深色背景别忘了开启此项）
+      # If true, the code background will change color based on the style (If style has a dark background, don't forget to true)
       bg_color: true
 copyright:
     enable: true
