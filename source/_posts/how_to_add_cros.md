@@ -134,9 +134,9 @@ app.listen(3000, () => {
 
 # 5 提示
 
-vercel免费判断每月500GB
+vercel免费判断每月500GB为不滥用，尽量不超过
 
 ### 脚注
 
 [^1]感谢大佬开源，仓库地址[live2d-widget](https://github.com/stevenjoezhang/live2d-widget),[live2d_api](https://github.com/fghrsh/live2d_api)
----------------------------------------------------------------------------------------------------------------------------------------------
+
