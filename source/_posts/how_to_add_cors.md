@@ -22,7 +22,7 @@ live2dapi[^1]
 注册链接在此
 [vercel注册](https://vercel.com/signup)
 
-可以通过github,gitlab或google直接注册，也可以用邮箱
+可以通过github,gitlab或bitbucket~有人用过吗~直接注册，也可以用邮箱
 
 ### 2.1.2 部署
 
@@ -30,7 +30,7 @@ live2dapi[^1]
 
 ## 2.2 其他平台
 
-其他还有railway,koyeb等，可自行测试
+其他还有cfpage,railway,koyeb等，可自行测试
 
 # 3 部署
 
