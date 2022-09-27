@@ -198,6 +198,12 @@ post:
   comments:
     enable: true
     type: twikoo
+  copyright:
+    enable: true
+
+    # CreativeCommons license
+    # Options: BY | BY-SA | BY-ND | BY-NC | BY-NC-SA | BY-NC-ND
+    license: BY-NC-SA
 twikoo:
   envId: https://comment.kodatemitsuru.ml/
 
@@ -236,12 +242,6 @@ code:
       # 是否根据 style 改变代码背景色（如果 style 是深色背景别忘了开启此项）
       # If true, the code background will change color based on the style (If style has a dark background, don't forget to true)
       bg_color: true
-copyright:
-    enable: true
-
-    # CreativeCommons license
-    # Options: BY | BY-SA | BY-ND | BY-NC | BY-NC-SA | BY-NC-ND
-    license: 'BY-SA'
 web_analytics:  # 网页访问统计
   enable: true # 默认为false，启用网页统计改为true即可
   google: G-9RT9FXQTRD
