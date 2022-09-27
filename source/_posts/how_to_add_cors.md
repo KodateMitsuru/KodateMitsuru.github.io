@@ -40,7 +40,7 @@ live2dapi[^1]
 公开或私有随意
 创建主脚本文件index.js
 
-```Nodejs
+```JavaScript
 const express = require('express');
 const { createProxyMiddleware } = require('http-proxy-middleware');
 const app = express();
