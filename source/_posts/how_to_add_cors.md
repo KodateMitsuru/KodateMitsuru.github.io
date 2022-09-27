@@ -9,7 +9,7 @@ date: 2022/9/27 20:49:29
 
 因为个人是高中生，没有资金来源，所以想干什么都先将费用问题放在第一上。
 最近用一个免费主机freehostia建了本博客的
-live2dapi[^1]，
+live2dapi[^1]
 但是遇到了cors跨域问题。
 这里给出一个解决方案(反代+添加标头)，同时解决cors及加载缓慢的问题。
 
@@ -40,7 +40,7 @@ live2dapi[^1]，
 公开或私有随意
 创建主脚本文件index.js
 
-```向Nodejs
+```Nodejs
 const express = require('express');
 const { createProxyMiddleware } = require('http-proxy-middleware');
 const app = express();
