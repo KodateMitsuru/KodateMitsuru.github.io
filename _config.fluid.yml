@@ -237,9 +237,10 @@ code:
   highlight:
     enable: true
     line_number: true
-    lib: "highlightjs"
-    highlightjs:
-      style: 'Hybird'
+    lib: "prismjs"
+    prismjs:
+      style: 'default'
+      preprocess: true
 copyright:
     enable: true
 
