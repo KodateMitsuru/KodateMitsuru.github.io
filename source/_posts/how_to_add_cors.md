@@ -3,7 +3,7 @@ title: 记录为live2dapi添加cors
 author:
 tags: cors,vercel,api,nodejs
 categories: 建站
-date: 2022/9/27下午8:49:29
+date: 2022/9/27 20:49:29
 ---
 # 1 说在最前
 
