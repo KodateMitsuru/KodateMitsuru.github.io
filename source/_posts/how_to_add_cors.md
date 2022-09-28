@@ -1,7 +1,11 @@
 ---
 title: 记录为live2dapi添加cors
 author:
-tags: cors,vercel,api,nodejs
+tags: 
+    - cors
+    - vercel
+    - api
+    - nodejs
 categories: 建站
 date: 2022/9/27 20:49:29
 ---
