@@ -2,7 +2,7 @@
 title: 愿你折腾半生，归来仍是cf
 author:
 tags:
-categories:
+categories: 随笔
 date: 2022/9/23 6:51:15
 ---
 

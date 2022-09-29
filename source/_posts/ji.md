@@ -2,7 +2,7 @@
 title: 寄
 author:
 tags:
-categories:
+categories: 随笔
 date: 2022/9/22 18:02:47
 ---
 

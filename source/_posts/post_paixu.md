@@ -2,7 +2,7 @@
 title: 博文排序
 author:
 tags:
-categories:
+categories: 随笔
 date: 2022/9/23 7:18:32
 ---
 

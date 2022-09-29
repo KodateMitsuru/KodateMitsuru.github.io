@@ -2,7 +2,7 @@
 title: wexa手机使用
 author:
 tags:
-categories:
+categories: 随笔
 date: 2022/9/22 12:19:01
 ---
 # 使用wexa于手机上在线写博客
