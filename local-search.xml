@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+  
+  
+  <entry>
+    <title>记录为live2dapi添加cors</title>
+    <link href="/2022/09/27/how_to_add_cors/"/>
+    <url>/2022/09/27/how_to_add_cors/</url>
+    
+    <content type="html"><![CDATA[<h1>1 说在最前</h1><p>因为个人是高中生，没有资金来源，所以想干什么都先将费用问题放在第一上。<br>最近用一个免费主机freehostia建了本博客的<br>live2dapi<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="感谢大佬开源，仓库地址[live2d-widget](https://github.com/stevenjoezhang/live2d-widget),[live2d_api](https://github.com/fghrsh/live2d_api)">[1]</span></a></sup><br>但是遇到了cors跨域问题。<br>这里给出一个解决方案(反代+添加标头)，同时解决cors及加载缓慢的问题。</p><h1>2 选择部署平台</h1><h2 id="2-1-vercel-serverless平台">2.1 vercel serverless平台</h2><h3 id="2-1-1-注册帐号">2.1.1 注册帐号</h3><p>注册链接在此<br><a href="https://vercel.com/signup">vercel注册</a></p><p>可以通过github,gitlab或bitbucket<s>有人用过吗</s>直接注册，也可以用邮箱</p><h3 id="2-1-2-部署">2.1.2 部署</h3><p>见后文</p><h2 id="2-2-其他平台">2.2 其他平台</h2><p>其他还有cfpage,railway,koyeb等，可自行测试</p><h1>3 部署</h1><h2 id="3-1-创建仓库">3.1 创建仓库</h2><p>创建一个github仓库<br>公开或私有随意<br>创建主脚本文件index.js</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-keyword">const</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;express&#x27;</span>);<br><span class="hljs-keyword">const</span> &#123; createProxyMiddleware &#125; = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;http-proxy-middleware&#x27;</span>);<br><span class="hljs-keyword">const</span> app = <span class="hljs-title function_">express</span>();<br><span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;path&#x27;</span>);<br><span class="hljs-comment">//设置允许跨域访问该服务.</span><br>app.<span class="hljs-title function_">all</span>(<span class="hljs-string">&#x27;*&#x27;</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">req, res, next</span>) &#123;<br>    <span class="hljs-comment">// 设置是否运行客户端设置 withCredentials</span><br>    <span class="hljs-comment">// 即在不同域名下发出的请求也可以携带 cookie</span><br>    res.<span class="hljs-title function_">header</span>(<span class="hljs-string">&quot;Access-Control-Allow-Credentials&quot;</span>, <span class="hljs-literal">true</span>)<br>    <span class="hljs-comment">// 第二个参数表示允许跨域的域名，* 代表所有域名  </span><br>    res.<span class="hljs-title function_">header</span>(<span class="hljs-string">&#x27;Access-Control-Allow-Origin&#x27;</span>, <span class="hljs-string">&#x27;*&#x27;</span>)<br>    res.<span class="hljs-title function_">header</span>(<span class="hljs-string">&#x27;Access-Control-Allow-Methods&#x27;</span>, <span class="hljs-string">&#x27;GET, PUT, POST, OPTIONS&#x27;</span>) <span class="hljs-comment">// 允许的 http 请求的方法</span><br>    <span class="hljs-comment">// 允许前台获得的除 Cache-Control、Content-Language、Content-Type、Expires、Last-Modified、Pragma 这几张基本响应头之外的响应头</span><br>    res.<span class="hljs-title function_">header</span>(<span class="hljs-string">&#x27;Access-Control-Allow-Headers&#x27;</span>, <span class="hljs-string">&#x27;Content-Type, Authorization, Content-Length, X-Requested-With&#x27;</span>)<br>    <span class="hljs-keyword">if</span> (req.<span class="hljs-property">method</span> == <span class="hljs-string">&#x27;OPTIONS&#x27;</span>) &#123;<br>        res.<span class="hljs-title function_">sendStatus</span>(<span class="hljs-number">200</span>)<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-title function_">next</span>()<br>    &#125;<br>&#125;);<br><br><span class="hljs-keyword">var</span> targetUrl = <span class="hljs-string">&quot;domain&quot;</span>;<br><span class="hljs-comment">// 拦截api的请求，转到目标服务器(domain换成api域名)</span><br>app.<span class="hljs-title function_">use</span>(<span class="hljs-string">&#x27;/*&#x27;</span>, <span class="hljs-title function_">createProxyMiddleware</span>(&#123; <span class="hljs-attr">target</span>: targetUrl, <span class="hljs-attr">changeOrigin</span>: <span class="hljs-literal">true</span> &#125;));<br><br><br><br><span class="hljs-comment">//配置服务端口</span><br>app.<span class="hljs-title function_">listen</span>(<span class="hljs-number">3000</span>, <span class="hljs-function">() =&gt;</span> &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`localhost:3000`</span>);<br>&#125;);<br></code></pre></td></tr></table></figure><p>向package.json中添加依赖</p><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;cors&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;version&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;1.0.0&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;description&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;main&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;index.js&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;scripts&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;test&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;node index.js&quot;</span><br>  <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;repository&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;type&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;url&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;&quot;</span><br>  <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;author&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;license&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;bugs&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;url&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;&quot;</span><br>  <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;homepage&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;dependencies&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;cors&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;^2.8.5&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;express&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;^4.18.1&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;http-proxy-middleware&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;^2.0.6&quot;</span><br>  <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure><p>填写vercel.json</p><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;version&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">2</span><span class="hljs-punctuation">,</span><br> <span class="hljs-attr">&quot;builds&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>        <span class="hljs-punctuation">&#123;</span><br>            <span class="hljs-attr">&quot;src&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;/index.js&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;use&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;@vercel/node&quot;</span><br>        <span class="hljs-punctuation">&#125;</span><br>    <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br><span class="hljs-attr">&quot;routes&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>        <span class="hljs-punctuation">&#123;</span><br>            <span class="hljs-attr">&quot;src&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;/(.*)&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;dest&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;/index.js&quot;</span><br>        <span class="hljs-punctuation">&#125;</span><br>    <span class="hljs-punctuation">]</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure><h2 id="3-2-部署">3.2 部署</h2><p>连接vercel,部署</p><h1>4 使用</h1><p>将vercel提供域名替换原域名即可</p><h1>5 提示</h1><p>vercel免费判断每月500GB为不滥用，尽量不超过</p><h3 id="脚注">脚注</h3><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span>感谢大佬开源，仓库地址<a href="https://github.com/stevenjoezhang/live2d-widget">live2d-widget</a>,<a href="https://github.com/fghrsh/live2d_api">live2d_api</a><a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>]]></content>
+    
+    
+    <categories>
+      
+      <category>建站</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>cors</tag>
+      
+      <tag>vercel</tag>
+      
+      <tag>api</tag>
+      
+      <tag>nodejs</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>博文排序</title>
+    <link href="/2022/09/22/post_paixu/"/>
+    <url>/2022/09/22/post_paixu/</url>
+    
+    <content type="html"><![CDATA[<h1>笑死我了</h1><p>一直以为是主题问题，然后在<strong>自带配置</strong>里发现这个</p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">index_generator:</span><br>    <span class="hljs-attr">path:</span> <span class="hljs-string">&#x27;&#x27;</span><br>    <span class="hljs-attr">per_page:</span> <span class="hljs-number">10</span><br>    <span class="hljs-attr">order_by:</span> <span class="hljs-string">-date</span> <span class="hljs-comment">#自动倒序排序</span><br></code></pre></td></tr></table></figure><p>总之就是离谱<br>反正现在好了</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>随笔</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>愿你折腾半生，归来仍是cf</title>
+    <link href="/2022/09/22/cloudflare_cdn/"/>
+    <url>/2022/09/22/cloudflare_cdn/</url>
+    
+    <content type="html"><![CDATA[<p>折腾一天cdn<br>不干了<br>cloudflare真香</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>随笔</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>寄</title>
+    <link href="/2022/09/22/ji/"/>
+    <url>/2022/09/22/ji/</url>
+    
+    <content type="html"><![CDATA[<p>live2d加载不出来，<br>还显示在文章层下面，<br>学会js在整吧<br><s>遥遥无期</s></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>随笔</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>wexa手机使用</title>
+    <link href="/2022/09/22/wexa/"/>
+    <url>/2022/09/22/wexa/</url>
+    
+    <content type="html"><![CDATA[<h1>使用wexa于手机上在线写博客</h1><p><img src="https://s2.loli.net/2022/09/22/lUsDBfdg5SeEvX2.jpg" alt=""><br>如图<br>好啊，很好啊</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>随笔</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  
+</search>
