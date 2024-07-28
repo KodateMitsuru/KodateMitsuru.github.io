@@ -81,7 +81,7 @@ provider = "disqusjs"
 
 [comments.disqusjs]
 shortname = "kodate.disqus.com"
-apiUrl = "https://disqus.skk.moe/disqus/"
+apiUrl = "https://comment.kodatemitsuru.us.kg"
 apiKey = "0NeSjsqUqO36Lmdw51lZI33uY6XTCMDT1oo3Rra0h95PDHXRKJPOYXe9L7enW0OO"
 admin = "kodatemitsuru"
 adminLabel = "author"
