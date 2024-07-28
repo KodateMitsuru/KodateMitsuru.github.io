@@ -77,7 +77,7 @@ enabled = true
 ## Comments
 [comments]
 enabled = true
-provider = "disqus"
+provider = "giscus"
 
 [comments.disqusjs]
 shortname = "kodate.disqus.com"
@@ -128,15 +128,18 @@ serverName = "cactus.chat"
 siteName = ""
 
 [comments.giscus]
-repo = ""
-repoID = ""
-category = ""
-categoryID = ""
-mapping = ""
-lightTheme = ""
-darkTheme = ""
+repo = "KodateMitsuru/KodateMitsuru.github.io"
+repoID = "R_kgDOMLzy7g"
+category = "Announcements"
+categoryID = "DIC_kwDOMLzy7s4ChOvB"
+mapping = "title"
+strict = 1
+lightTheme = "light"
+darkTheme = "dark"
 reactionsEnabled = 1
 emitMetadata = 0
+input-position = "top"
+lang = "zh-CN"
 
 [comments.gitalk]
 owner = ""
