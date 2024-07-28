@@ -77,7 +77,7 @@ enabled = true
 ## Comments
 [comments]
 enabled = true
-provider = "disqusjs"
+provider = "disqus"
 
 [comments.disqusjs]
 shortname = "kodate.disqus.com"
