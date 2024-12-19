@@ -1,3 +1,4 @@
+import type Giscus from 'giscus'
 import type { AUTO_MODE, DARK_MODE, LIGHT_MODE } from '@constants/constants'
 
 export type SiteConfig = {
@@ -72,6 +73,24 @@ export type LIGHT_DARK_MODE =
   | typeof DARK_MODE
   | typeof AUTO_MODE
 
+export type CommentConfig = {
+  giscus?: GiscusConfig
+}
+type GiscusConfig = {
+  repo: Giscus.Repo
+  repoId?: string
+  category?: string
+  categoryId?: string
+  mapping?: Giscus.Mapping
+  term?: string
+  strict: Giscus.BooleanString
+  reactionsEnabled: Giscus.BooleanString
+  emitMetadata: Giscus.BooleanString
+  inputPosition: Giscus.InputPosition
+  theme: Giscus.Theme
+  lang: Giscus.AvailableLanguage
+  loading: Giscus.Loading
+}
 export type BlogPostData = {
   body: string
   title: string
