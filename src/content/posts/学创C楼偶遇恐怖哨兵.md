@@ -1,6 +1,6 @@
 ---
 title: 学创C楼偶遇恐怖哨兵
-published: 2024-12-19 05:18:00
+published: 2024-12-19 17:18:00
 description: '学创C楼偶遇恐怖哨兵 自瞄辅瞄强如怪物 拼尽全力无法战胜'
 image: ''
 tags: [robomaster]
