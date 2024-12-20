@@ -4,7 +4,7 @@ published: 2024-12-20 22:53:19
 description: '我的人生是这样被毁掉的'
 image: ''
 tags: [python,web,sanic,vercel]
-category: 'coding,thinking'
+category: '[coding,thinking]'
 draft: false 
 lang: ''
 ---
