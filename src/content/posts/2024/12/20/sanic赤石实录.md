@@ -229,4 +229,10 @@ app.listen(8000, () => console.log("Server running on port 8000"));
 
 <iframe frameborder="yes" border="100" marginwidth="0" marginheight="0" width=330 height=86 src="https://music.163.com/outchain/player?type=2&id=2043164658&auto=1&height=66"></iframe>
 
-[^1]: 要么进组，要么人工智能不会调参问我怎么调，要么特别随便拉个人都认识，你们这些大佬不要在我面前秀了好不好
+# 5. 致谢
+
+~感谢你们的代码给我抄~
+1. [finicounter](https://finicounter.eu.org/)
+2. [Implementing a page view counter](https://backyardcoder.me/posts/implementing-a-page-view-counter/)
+
+[^1]: ~要么进组，要么做人工智能调参来问我怎么调，要么特别随便拉个人都认识，你们这些大佬不要在我面前秀了好不好~
