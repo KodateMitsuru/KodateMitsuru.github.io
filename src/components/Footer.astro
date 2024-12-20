@@ -1,5 +1,5 @@
 ---
-
+import PageViewCounter from './PageViewCounter.svelte'
 import { profileConfig } from '../config'
 import { url } from '../utils/url-utils'
 const currentYear = new Date().getFullYear()
@@ -15,6 +15,7 @@ const currentYear = new Date().getFullYear()
         <a class="transition link text-[var(--primary)] font-medium" target="_blank" href={url('sitemap-index.xml')}>Sitemap</a><br>
         Powered by
         <a class="transition link text-[var(--primary)] font-medium" target="_blank" href="https://astro.build">Astro</a> &
-        <a class="transition link text-[var(--primary)] font-medium" target="_blank" href="https://github.com/saicaca/fuwari">Fuwari</a>
+        <a class="transition link text-[var(--primary)] font-medium" target="_blank" href="https://github.com/saicaca/fuwari">Fuwari</a><br>
+        <PageViewCounter client:only="svelte" />
     </div>
 </div>
