@@ -12,7 +12,27 @@ function getDate() {
   return `${year}-${month}-${day}`
 }
 
-const args = process.argv.slice(2)
+
+function getDateStringForPath() {
+  const today = new Date()
+  const year = today.getFullYear()
+  const month = String(today.getMonth() + 1).padStart(2, '0')
+  const day = String(today.getDate()).padStart(2, '0')
+
+  return `${year}/${month}/${day}`
+}
+
+function getTime() {
+  const today = new Date()
+  const hours = String(today.getHours()).padStart(2, "0")
+  const minutes = String(today.getMinutes()).padStart(2, "0")
+  const seconds = String(today.getSeconds()).padStart(2, "0")
+
+  // Format the time as HH:MM:SS
+  return `${hours}:${minutes}:${seconds}`
+}
+
+const args = process.argv.slice(2);
 
 if (args.length === 0) {
   console.error(`Error: No filename argument provided
@@ -28,17 +48,22 @@ if (!fileExtensionRegex.test(fileName)) {
   fileName += ".md"
 }
 
-const targetDir = "./src/content/posts/"
+const targetDir = `./src/content/posts/${getDateStringForPath()}`
 const fullPath = path.join(targetDir, fileName)
 
 if (fs.existsSync(fullPath)) {
-  console.error(`Error：File ${fullPath} already exists `)
+  console.error(`Error: File ${fullPath} already exists`)
   process.exit(1)
+}
+
+// Ensure the target directory exists
+if (!fs.existsSync(targetDir)) {
+  fs.mkdirSync(targetDir, { recursive: true })
 }
 
 const content = `---
 title: ${args[0]}
-published: ${getDate()}
+published: ${getDate()} ${getTime()}
 description: ''
 image: ''
 tags: []
@@ -48,6 +73,6 @@ lang: ''
 ---
 `
 
-fs.writeFileSync(path.join(targetDir, fileName), content)
+fs.writeFileSync(fullPath, content)
 
 console.log(`Post ${fullPath} created`)
