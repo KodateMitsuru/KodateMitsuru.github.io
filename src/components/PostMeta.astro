@@ -4,7 +4,6 @@ import { Icon } from 'astro-icon/components'
 import { i18n } from '../i18n/translation'
 import I18nKey from '../i18n/i18nKey'
 import { url } from '../utils/url-utils'
-
 interface Props {
   class: string
   published: Date
@@ -17,6 +16,49 @@ interface Props {
 const { published, updated, tags, category, hideTagsForMobile = false, hideUpdateDate = false } = Astro.props
 const className = Astro.props.class
 ---
+
+<script>
+    let previousUrl = window.location.pathname;
+    let isfirst = 0;
+    // 定义一个函数来处理 URL 更改
+    function handleUrlChange() {
+        const currentUrl = window.location.pathname;
+        if (currentUrl === previousUrl  && isfirst != 0) {
+            return;
+        }
+        previousUrl = currentUrl;
+        isfirst = 1;
+        fetch('https://api.kodatemitsuru.com/api/pageViews', {
+            method: 'PUT',
+            referrerPolicy: 'same-origin',
+            body: JSON.stringify({
+                path: currentUrl,
+            }),
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        });
+    }
+
+    // 初始调用以处理当前 URL
+    handleUrlChange();
+
+    // 监听 popstate 事件以处理 URL 更改
+    window.addEventListener('popstate', handleUrlChange);
+
+    // 可选：监听 pushState 和 replaceState 以处理通过 JavaScript 更改的 URL
+    const originalPushState = history.pushState;
+    history.pushState = function(...args) {
+        originalPushState.apply(this, args);
+        handleUrlChange();
+    };
+
+    const originalReplaceState = history.replaceState;
+    history.replaceState = function(...args) {
+        originalReplaceState.apply(this, args);
+        handleUrlChange();
+    };
+</script>
 
 <div class:list={["flex flex-wrap text-neutral-500 dark:text-neutral-400 items-center gap-4 gap-x-4 gap-y-2", className]}>
     <!-- publish date -->
