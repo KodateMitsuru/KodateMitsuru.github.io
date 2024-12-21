@@ -8,7 +8,7 @@ import type {
 import { LinkPreset } from './types/config'
 
 export const siteConfig: SiteConfig = {
-  title: 'KodateMitsuru',
+  title: "KodateMitsuru's blog",
   subtitle: 'ad astra per aspera',
   lang: 'zh_CN',         // 'en', 'zh_CN', 'zh_TW', 'ja', 'ko'
   themeColor: {
