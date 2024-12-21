@@ -2,7 +2,7 @@
 import { onMount } from 'svelte'
 let pageViews = $state(0)
 
-async function fetchPageViews() {
+async function updatePageViews() {
   const encodedPath = encodeURIComponent(window.location.pathname)
   const specificElement = document.getElementById('counter'); //奇异搞笑之手动更新
   if (specificElement) {
@@ -37,10 +37,25 @@ async function fetchPageViews() {
     // Default to "1" as the current user is seeing the page
     pageViews = 1
   }
+  try {
+    // update the page view count
+    await fetch('https://api.kodatemitsuru.com/api/pageViews', {
+            method: 'PUT',
+            referrerPolicy: 'same-origin',
+            body: JSON.stringify({
+                path: window.location.pathname,
+            }),
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        });
+  } catch (err) {
+    // ignore the error
+  }
 }
 
 onMount(async () => {
-  await fetchPageViews()
+  await updatePageViews()
 })
 </script>
 
