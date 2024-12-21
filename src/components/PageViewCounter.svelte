@@ -1,10 +1,8 @@
 <script lang="ts">
 import { onMount } from 'svelte'
+let pageViews = $state(0)
 
-let pageViews = 0
-
-// execute this function after the component mounts
-onMount(async () => {
+async function fetchPageViews() {
   const encodedPath = encodeURIComponent(window.location.pathname)
 
   try {
@@ -32,11 +30,17 @@ onMount(async () => {
     // Default to "1" as the current user is seeing the page
     pageViews = 1
   }
+}
+
+onMount(async () => {
+  await fetchPageViews()
 })
 </script>
-{#if pageViews > 0}
 
-  Seen 👀 by {pageViews} human(s)
 
+{#if pageViews === 0}
+  <p>Loading...</p>
+{:else}
+  <p>Seen 👀 by {pageViews} human(s)</p>
 {/if}
 
