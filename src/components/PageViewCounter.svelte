@@ -4,7 +4,10 @@ let pageViews = $state(0)
 
 async function fetchPageViews() {
   const encodedPath = encodeURIComponent(window.location.pathname)
-
+  const specificElement = document.getElementById('counter'); //奇异搞笑之手动更新
+  if (specificElement) {
+    specificElement.innerHTML = "Loading..."
+  }
   try {
     // fetch the data for the current page
     const response = await fetch(
@@ -26,6 +29,10 @@ async function fetchPageViews() {
       // Optimistically, show the new page view count
       pageViews = Number(count) + 1
     }
+
+		if (specificElement) {
+			specificElement.innerHTML = `Seen 👀 by ${pageViews} human(s)`
+		}
   } catch (err) {
     // Default to "1" as the current user is seeing the page
     pageViews = 1
@@ -39,8 +46,9 @@ onMount(async () => {
 
 
 {#if pageViews === 0}
-  <p>Loading...</p>
+  Loading...
 {:else}
-  <p>Seen 👀 by {pageViews} human(s)</p>
+  Seen 👀 by {pageViews} human(s)
 {/if}
+
 
