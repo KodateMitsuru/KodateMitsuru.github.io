@@ -1,4 +1,5 @@
 ---
+import PageViewCounter from '../components/PageViewCounter.svelte'
 import Footer from '@components/Footer.astro'
 import Navbar from '@components/Navbar.astro'
 import BackToTop from '@components/control/BackToTop.astro'
@@ -75,13 +76,14 @@ const mainPanelTop = siteConfig.banner.enable ? `calc(${BANNER_HEIGHT}vh - ${MAI
                     <!-- make id different from windows.swup global property -->
                     <slot></slot>
                     <div class="footer col-span-2 onload-animation hidden lg:block">
-                        <Footer></Footer>
+                        <Footer><PageViewCounter client:only="svelte" /></Footer>
                     </div>
                 </div>
             </main>
 
             <div class="footer col-span-2 onload-animation block lg:hidden">
-                <Footer></Footer>
+                <!--shit but can work-->
+                <Footer><div id="counter"><PageViewCounter client:only="svelte" target="main" /></div></Footer>
             </div>
         </div>
 
