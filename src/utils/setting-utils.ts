@@ -27,12 +27,15 @@ export function setHue(hue: number): void {
 }
 
 export function applyThemeToDocument(theme: LIGHT_DARK_MODE) {
+  const giscusWidget = document.querySelectorAll('giscus-widget')
   switch (theme) {
     case LIGHT_MODE:
       document.documentElement.classList.remove('dark')
+      giscusWidget.setAttribute('theme', 'light')
       break
     case DARK_MODE:
       document.documentElement.classList.add('dark')
+      giscusWidget.setAttribute('theme', 'light')
       break
     case AUTO_MODE:
       if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
@@ -40,6 +43,7 @@ export function applyThemeToDocument(theme: LIGHT_DARK_MODE) {
       } else {
         document.documentElement.classList.remove('dark')
       }
+      giscusWidget.setAttribute('theme', 'preferred_color_scheme')
       break
   }
 }
