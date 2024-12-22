@@ -4,6 +4,7 @@ import { i18n } from '@i18n/translation'
 import { onMount } from 'svelte'
 
 let siteViews = 0
+let isCounted = false
 
 async function updatePageViews() {
   const footerCounter = document.getElementById('footer-counter')
@@ -30,13 +31,19 @@ async function updatePageViews() {
         siteViews = 1
       } else {
         const { count } = await response.json()
-        siteViews = Number(count) + 1
+        if (!sessionStorage.getItem('isCounted')) {
+          siteViews = Number(count) + 1
+        } else {
+          siteViews = Number(count)
+          isCounted = true
+        }
+        
       }
     } catch (error) {
       console.error('Error fetching site views:', error)
       siteViews = 1
     }
-    if (!sessionStorage.getItem('isCounted')) {
+    if (!isCounted) {
       // 如果没有记录，则进行计数并存储记录
       sessionStorage.setItem('isCounted', 'true')
       await fetch("https://api.kodatemitsuru.com/api/siteViews", {
