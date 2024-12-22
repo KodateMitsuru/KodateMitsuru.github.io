@@ -107,11 +107,11 @@ ai啪的一下给出来一堆信息，一点卵用没有，全是一些子虚乌
 
 经过一阵青年大学习，我终于认识到其实没有被swup接管才是原因[^2]，为什么呢，因为被包在`<main></main>`里的`<footer />`是可以正常刷新的，但是直接把另一个`<footer />`塞进去会使整个页面错乱，~要不然主题作者为什么不删掉后面一个而是用`block lg:hidden`和`hidden lg:block`做移动端适配~于是我就看了一下指导swup接管另一个`<footer />`的刷新，于是我就看到[这个](https://swup.js.org/options/)
 
-> # Options
+> ## Options
 >
 > Swup has several options that can be passed in during initialization.
 >
-> ## Defaults
+> ### Defaults
 >
 > These are the default options. See below for details on each option.
 >
@@ -269,6 +269,7 @@ try {
 感觉没用的知识又增加了，还是不知道怎么面对线代和高数，🐔
 
 # 后后记
+
 突然发现这样就可以干掉一个位置的`<PageViewCounter client:only="svelte" />`,然后就可以合并计数更新代码到svelte里面[^4]，这样就解决获取计数与更新计数不同步的奇异搞笑问题了
 这依托史突然优美不少，绷
 
@@ -277,5 +278,5 @@ try {
 [^2]: 现在才知道，晚了哈哈，你已经浪费了生命中宝贵的3小时
     
 [^3]: 如果有哪位大佬知道可以告诉我，~虽然估计没什么人会看就是~
-
+    
 [^4]: 因为少了一个`<PageViewCounter client:only="svelte" />`打开页面时就不会调用两次代码
