@@ -36,6 +36,9 @@ enum I18nKey {
   author = 'author',
   publishedAt = 'publishedAt',
   license = 'license',
+
+  NotFound0 = 'NotFound0',
+  NotFound1 = 'NotFound1',
 }
 
 export default I18nKey

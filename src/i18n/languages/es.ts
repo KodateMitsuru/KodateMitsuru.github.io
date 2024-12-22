@@ -39,4 +39,7 @@ export const es: Translation = {
   [Key.author]: 'Autor',
   [Key.publishedAt]: 'Publicado el',
   [Key.license]: 'Licencia',
+
+  [Key.NotFound0]: 'Gato',
+  [Key.NotFound1]: 'Página no encontrada~',
 }
