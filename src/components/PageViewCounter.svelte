@@ -14,7 +14,7 @@ async function updatePageViews() {
   else if (url){
     
     const encodedPath = encodeURIComponent(url)
-    console.log(encodedPath)
+
     try {
       // fetch the data for the current page
       const response = await fetch(
@@ -42,7 +42,6 @@ async function updatePageViews() {
   }
   else {
     const encodedPath = encodeURIComponent(decodeURIComponent((window.location.pathname)))
-    console.log(encodedPath)
     try {
       // fetch the data for the current page
       const response = await fetch(
@@ -88,7 +87,6 @@ async function updatePageViews() {
 }
 
 onMount(async () => {
-
   await updatePageViews()
 })
 </script>
