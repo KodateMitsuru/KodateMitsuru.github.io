@@ -21,8 +21,8 @@ export const ja: Translation = {
   [Key.wordsCount]: '文字',
   [Key.minuteCount]: '分',
   [Key.minutesCount]: '分',
-  [Key.readCount]: '人が読みました',
-  [Key.readsCount]: '人が読みました',
+  [Key.readCount]: '回の読み',
+  [Key.readsCount]: '回の読み',
   [Key.postCount]: '件の投稿',
   [Key.postsCount]: '件の投稿',
 

@@ -21,8 +21,8 @@ export const ko: Translation = {
   [Key.wordsCount]: '단어',
   [Key.minuteCount]: '분',
   [Key.minutesCount]: '분',
-  [Key.readCount]: '명이 읽었습니다',
-  [Key.readsCount]: '명이 읽었습니다',
+  [Key.readCount]: '회 읽기',
+  [Key.readsCount]: '회 읽기',
   [Key.postCount]: '게시물',
   [Key.postsCount]: '게시물',
 

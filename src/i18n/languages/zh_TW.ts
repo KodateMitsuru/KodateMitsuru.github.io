@@ -21,8 +21,8 @@ export const zh_TW: Translation = {
   [Key.wordsCount]: '字',
   [Key.minuteCount]: '分鐘',
   [Key.minutesCount]: '分鐘',
-  [Key.readCount]: '人讀過',
-  [Key.readsCount]: '人讀過',
+  [Key.readCount]: '次阅读',
+  [Key.readsCount]: '次阅读',
   [Key.postCount]: '篇文章',
   [Key.postsCount]: '篇文章',
 
