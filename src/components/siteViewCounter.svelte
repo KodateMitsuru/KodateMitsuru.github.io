@@ -30,7 +30,7 @@ async function updatePageViews() {
         siteViews = 1
       } else {
         const { count } = await response.json()
-        siteViews = Number(count)
+        siteViews = Number(count) + 1
       }
     } catch (error) {
       console.error('Error fetching site views:', error)
