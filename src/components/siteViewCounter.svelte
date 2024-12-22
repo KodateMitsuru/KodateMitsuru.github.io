@@ -10,63 +10,47 @@ async function updatePageViews() {
   if (footerCounter) {
     footerCounter.innerHTML = "Loading..."
   }
-
-  // 检查 sessionStorage 中是否存在访问记录
-  const isCounted = sessionStorage.getItem('isCounted')
-
-  if (!isCounted) {
-    // 如果没有记录，则进行计数并存储记录
-    sessionStorage.setItem('isCounted', 'true')
-
-    if (import.meta.env.DEV) {
-      siteViews = 114514
-      console.log('DEV mode, siteViews set to 114514')
-    } else {
-      try {
-        // fetch the data for the current page
-        const response = await fetch(
-          "https://api.kodatemitsuru.com/api/siteViews",
-          {
-            method: 'GET',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-          }
-        )
-
-        if (!response.ok) {
-          siteViews = 1
-        } else {
-          const data = await response.json()
-          siteViews = data.views
-        }
-      } catch (error) {
-        console.error('Error fetching site views:', error)
-        siteViews = 1
-      }
-    }
-    sessionStorage.setItem('siteViews', siteViews.toString())
-
-    if (footerCounter) {
-      footerCounter.innerHTML = siteViews.toString()
-    }
-    await fetch("https://api.kodatemitsuru.com/api/siteViews", {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({}),
-    })
+  if (import.meta.env.DEV) {
+    siteViews = 114514
+    console.log('DEV mode, siteViews set to 114514')
   } else {
-    // 如果已经记录，则从 sessionStorage 中读取访问计数
-    siteViews = Number(sessionStorage.getItem('siteViews') || 0)
-    if (footerCounter) {
-      footerCounter.innerHTML = siteViews.toString()
+    try {
+      // fetch the data for the current page
+      const response = await fetch(
+      "https://api.kodatemitsuru.com/api/siteViews",
+        {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      )
+
+      if (!response.ok) {
+        siteViews = 1
+      } else {
+        const { count } = await response.json()
+        siteViews = Number(count)
+      }
+    } catch (error) {
+      console.error('Error fetching site views:', error)
+      siteViews = 1
+    }
+    if (!sessionStorage.getItem('isCounted')) {
+      // 如果没有记录，则进行计数并存储记录
+      sessionStorage.setItem('isCounted', 'true')
+      await fetch("https://api.kodatemitsuru.com/api/siteViews", {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({}),
+      })
     }
   }
-
-  // 将访问计数存储到 sessionStorage 中
-  sessionStorage.setItem('siteViews', siteViews.toString())
+  if (footerCounter) {
+    footerCounter.innerHTML = `${siteViews} ${i18n(I18nKey.sitesCount)}`
+  }
 }
 
 onMount(() => {
