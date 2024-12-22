@@ -23,6 +23,8 @@ export const zh_CN: Translation = {
   [Key.minutesCount]: '分钟',
   [Key.readCount]: '次阅读',
   [Key.readsCount]: '次阅读',
+  [Key.siteCount]: '人来过',
+  [Key.sitesCount]: '人来过',
   [Key.postCount]: '篇文章',
   [Key.postsCount]: '篇文章',
 

@@ -23,6 +23,8 @@ export const ko: Translation = {
   [Key.minutesCount]: '분',
   [Key.readCount]: '회 읽기',
   [Key.readsCount]: '회 읽기',
+  [Key.siteCount]: '명이 왔습니다',
+  [Key.sitesCount]: '명이 왔습니다',
   [Key.postCount]: '게시물',
   [Key.postsCount]: '게시물',
 
