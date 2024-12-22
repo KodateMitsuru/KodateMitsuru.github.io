@@ -18,6 +18,8 @@ enum I18nKey {
   wordsCount = 'wordsCount',
   minuteCount = 'minuteCount',
   minutesCount = 'minutesCount',
+  readCount = 'readCount',
+  readsCount = 'readsCount',
   postCount = 'postCount',
   postsCount = 'postsCount',
 

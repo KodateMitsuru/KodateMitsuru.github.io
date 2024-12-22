@@ -14,6 +14,7 @@ import ImageWrapper from '../../components/misc/ImageWrapper.astro'
 import { profileConfig, siteConfig } from '../../config'
 import { formatDateToYYYYMMDD } from '../../utils/date-utils'
 import Comment from '../../components/comment/index.astro'
+import PageViewCounter from '../../components/PageViewCounter.svelte'
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection('posts', ({ data }) => {
@@ -65,6 +66,12 @@ const jsonLd = {
                         <Icon name="material-symbols:schedule-outline-rounded"></Icon>
                     </div>
                     <div class="text-sm">{remarkPluginFrontmatter.minutes} {" " + i18n(I18nKey.minutesCount)}</div>
+                </div>
+                <div class="flex flex-row items-center">
+                    <div class="transition h-6 w-6 rounded-md bg-black/5 dark:bg-white/10 text-black/50 dark:text-white/50 flex items-center justify-center mr-2">
+                        <Icon name="material-symbols:visibility-outline-rounded"></Icon>
+                    </div>
+                    <div class="text-sm"><PageViewCounter client:only="svelte"/></div>
                 </div>
             </div>
 

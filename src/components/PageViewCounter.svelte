@@ -1,13 +1,48 @@
 <script lang="ts">
+import I18nKey from '@i18n/i18nKey'
+import { i18n } from '@i18n/translation'
 import { onMount } from 'svelte'
-let pageViews = $state(0)
+let pageViews = $state(-1)
+const dec = $state(i18n(I18nKey.readCount))
+const { url } = $props();
 
 async function updatePageViews() {
   if (import.meta.env.DEV) {
     pageViews = 114514
+    console.log('DEV mode, pageViews set to 114514')
+  }
+  else if (url){
+    
+    const encodedPath = encodeURIComponent(url)
+    console.log(encodedPath)
+    try {
+      // fetch the data for the current page
+      const response = await fetch(
+        `https://api.kodatemitsuru.com/api/pageViews?path=${encodedPath}`,
+        {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        },
+      )
+
+      // Gracefully handle the error scenario.
+      if (!response.ok) {
+        pageViews = 0
+      } else {
+        const { count } = await response.json()
+        // Optimistically, show the new page view count
+        pageViews = Number(count)
+      }
+
+    } catch (err) {
+      pageViews = 0
+    }
   }
   else {
-    const encodedPath = encodeURIComponent(window.location.pathname)
+    const encodedPath = encodeURIComponent(decodeURIComponent((window.location.pathname)))
+    console.log(encodedPath)
     try {
       // fetch the data for the current page
       const response = await fetch(
@@ -40,7 +75,7 @@ async function updatePageViews() {
               method: 'PUT',
               referrerPolicy: 'same-origin',
               body: JSON.stringify({
-                  path: window.location.pathname,
+                  path: decodeURIComponent(window.location.pathname),
               }),
               headers: {
                   'Content-Type': 'application/json',
@@ -53,22 +88,16 @@ async function updatePageViews() {
 }
 
 onMount(async () => {
-  const specificElement = document.getElementById('counter') //奇异搞笑之手动更新
-  if (specificElement) {
-    specificElement.innerHTML = "Loading..."
-  }
+
   await updatePageViews()
-  if (specificElement) {
-    specificElement.innerHTML = `Seen 👀 by ${pageViews} human(s)`
-  }
 })
 </script>
 
 
-{#if pageViews === 0}
+{#if pageViews === -1}
   Loading...
 {:else}
-  Seen 👀 by {pageViews} human(s)
+  {pageViews} {dec}
 {/if}
 
 
