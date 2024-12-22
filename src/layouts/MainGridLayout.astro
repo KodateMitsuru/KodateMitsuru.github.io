@@ -10,7 +10,7 @@ import type { MarkdownHeading } from 'astro'
 import TOC from "../components/widget/TOC.astro";
 import ImageWrapper from "../components/misc/ImageWrapper.astro";
 import {BANNER_HEIGHT, BANNER_HEIGHT_EXTEND, MAIN_PANEL_OVERLAPS_BANNER_HEIGHT} from "../constants/constants";
-
+import SiteViewCounter from "../components/siteViewCounter.svelte"
 interface Props {
   title?: string
   banner?: string
@@ -75,14 +75,14 @@ const mainPanelTop = siteConfig.banner.enable ? `calc(${BANNER_HEIGHT}vh - ${MAI
                     <!-- make id different from windows.swup global property -->
                     <slot></slot>
                     <div class="footer col-span-2 onload-animation hidden lg:block">
-                        <Footer></Footer>
+                        <Footer><SiteViewCounter client:only="svelte" /></Footer>
                     </div>
                 </div>
             </main>
 
             <div class="footer col-span-2 onload-animation block lg:hidden">
                 <!--shit but can work-->
-                <Footer></Footer>
+                <Footer><div id="footer-counter"></div></Footer>
             </div>
         </div>
 
