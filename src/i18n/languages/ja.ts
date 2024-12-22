@@ -39,4 +39,7 @@ export const ja: Translation = {
   [Key.author]: '作者',
   [Key.publishedAt]: '公開日',
   [Key.license]: 'ライセンス',
+
+  [Key.NotFound0]: '猫',
+  [Key.NotFound1]: 'ページが見つかりません～',
 }

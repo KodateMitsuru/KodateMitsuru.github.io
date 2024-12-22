@@ -39,4 +39,7 @@ export const zh_TW: Translation = {
   [Key.author]: '作者',
   [Key.publishedAt]: '發佈於',
   [Key.license]: '許可協議',
+
+  [Key.NotFound0]: '貓',
+  [Key.NotFound1]: '頁面不見了～',
 }

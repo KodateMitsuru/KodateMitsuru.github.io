@@ -2,21 +2,25 @@
 import MainGridLayout from '@layouts/MainGridLayout.astro'
 import { url } from '@utils/url-utils'
 import { Icon } from 'astro-icon/components'
+import I18nKey from '@i18n/i18nKey'
+import { i18n } from '@i18n/translation'
 ---
 
 <MainGridLayout>
   <div class="rounded-[var(--radius-large)] overflow-hidden relative w-auto h-auto m-auto">
     <div class="card-base z-10 px-9 py-6 relative w-full text-black/75 dark:text-white/75">
-       <div class="flex items-center gap-4">
-        <h1 class="text-[5rem] font-bold">404</h1>
-        <p class="text-[2rem]">Not found</p>
-       </div>
-       <img src="https://http.cat/images/404.jpg" alt="404 Not Found" class="w-full h-auto mt-4" style="object-fit: cover;" />
+      <div class="flex items-center gap-4">
+        <div class="flex flex-col items-center w-1/2">
+          <p class="text-[5rem] font-bold">404</p>
+          <p class="text-[2rem]"><del>{i18n(I18nKey.NotFound0)}</del>{i18n(I18nKey.NotFound1)}</p>
+        </div>
+        <img src="https://http.cat/images/404.jpg" alt="404 Not Found" class="rounded-[var(--radius-large)] w-1/2 h-auto mt-4" style="object-fit: cover;" />
+      </div>
     </div>
     <div class="flex flex-col md:flex-row justify-between mb-4 gap-4 overflow-hidden w-full"></div>
     <a href={url("/")} class:list={["font-bold overflow-hidden active:scale-95"]}
-    class:list={["w-full font-bold overflow-hidden active:scale-95"]}>
-        {<div class="btn-card rounded-2xl w-full h-[3.75rem] max-w-full px-4 flex items-center !justify-start gap-4" >
+    class:list={["w-1/2 font-bold overflow-hidden active:scale-95"]}>
+        {<div class="btn-card rounded-2xl w-1/2 h-[3.75rem] max-w-full px-4 flex items-center !justify-start gap-4" >
             <Icon name="material-symbols:chevron-left-rounded" class="text-[2rem] text-[var(--primary)]" />
             <div class="overflow-hidden transition overflow-ellipsis whitespace-nowrap max-w-[calc(100%_-_3rem)] text-black/75 dark:text-white/75">
                 Return to top page

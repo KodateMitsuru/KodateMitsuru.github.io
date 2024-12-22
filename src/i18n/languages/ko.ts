@@ -39,4 +39,7 @@ export const ko: Translation = {
   [Key.author]: '저자',
   [Key.publishedAt]: '게시일',
   [Key.license]: '라이선스',
+
+  [Key.NotFound0]: '고양이',
+  [Key.NotFound1]: '페이지를 찾을 수 없습니다~',
 }
