@@ -1,6 +1,6 @@
 ---
 title: sanic赤石实录
-published: 2024-12-20 22:53:19
+published: 2024-12-20 22:53:19 +08:00
 description: '我的人生是这样被毁掉的'
 image: ''
 tags: [python,web,sanic,vercel]
@@ -232,6 +232,7 @@ app.listen(8000, () => console.log("Server running on port 8000"));
 # 5. 致谢
 
 ~感谢你们的代码给我抄~
+
 1. [finicounter](https://finicounter.eu.org/)
 2. [Implementing a page view counter](https://backyardcoder.me/posts/implementing-a-page-view-counter/)
 
