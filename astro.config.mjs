@@ -22,7 +22,7 @@ import { remarkReadingTime } from "./src/plugins/remark-reading-time.mjs";
 // https://astro.build/config
 export default defineConfig({
   site: "https://blog.kodatemitsuru.com/",
-  trailingSlash: "always",
+  trailingSlash: "ignore",
   integrations: [
     tailwind(
         {
@@ -127,5 +127,8 @@ export default defineConfig({
         },
       },
     },
+  },
+  image: {
+    domains: ["s2.loli.net"],
   },
 });

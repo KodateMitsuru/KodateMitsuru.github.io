@@ -5,6 +5,7 @@ import { url, getPostUrlBySlug } from '@utils/url-utils'
 import { Icon } from 'astro-icon/components'
 import I18nKey from '@i18n/i18nKey'
 import { i18n } from '@i18n/translation'
+import { Image } from 'astro:assets'
 
 async function getrandpost() {
   const blogEntries = await getCollection('posts', ({ data }) => {
@@ -27,7 +28,7 @@ const randurl = await getrandpost()
           <p class="text-[5rem] font-bold">404</p>
           <p class="text-[2rem]"><del>{i18n(I18nKey.NotFound0)}</del>{i18n(I18nKey.NotFound1)}</p>
         </div>
-        <img src="https://http.cat/images/404.jpg" alt="404 Not Found" class="rounded-[var(--radius-large)] w-1/2 h-auto mt-4" style="object-fit: cover;" />
+        <Image inferSize={true} src="https://http.cat/images/404.jpg" alt="404 Not Found" class="rounded-[var(--radius-large)] w-1/2 h-auto mt-4" style="object-fit: cover;" />
       </div>
     </div>
   </div>
