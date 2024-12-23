@@ -63,7 +63,7 @@ if (!fs.existsSync(targetDir)) {
 
 const content = `---
 title: ${args[0]}
-published: ${getDate()} ${getTime()}
+published: ${getDate()} ${getTime()} +08:00
 description: ''
 image: ''
 tags: []
