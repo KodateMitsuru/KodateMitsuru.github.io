@@ -12,7 +12,7 @@ async function getrandpost() {
   })
 
   const randomIndex = Math.floor(Math.random() * blogEntries.length)
-  return getPostUrlBySlug(blogEntries[randomIndex].id)
+  return getPostUrlBySlug(blogEntries[randomIndex].slug)
 }
 
 const randurl = await getrandpost()
