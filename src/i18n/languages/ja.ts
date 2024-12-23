@@ -42,4 +42,6 @@ export const ja: Translation = {
 
   [Key.NotFound0]: '猫',
   [Key.NotFound1]: 'ページが見つかりません～',
+  [Key.NotFound2]: 'ホームに戻る',
+  [Key.NotFound3]: 'ランダムページ',
 }

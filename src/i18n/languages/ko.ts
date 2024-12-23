@@ -42,4 +42,6 @@ export const ko: Translation = {
 
   [Key.NotFound0]: '고양이',
   [Key.NotFound1]: '페이지를 찾을 수 없습니다~',
+  [Key.NotFound2]: '홈으로',
+  [Key.NotFound3]: '랜덤 페이지로',
 }

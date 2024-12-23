@@ -42,4 +42,6 @@ export const zh_CN: Translation = {
 
   [Key.NotFound0]: '猫',
   [Key.NotFound1]: '页面不见了～',
+  [Key.NotFound2]: '返回主页',
+  [Key.NotFound3]: '来个随机页面',
 }
