@@ -42,4 +42,6 @@ export const es: Translation = {
 
   [Key.NotFound0]: 'Gato',
   [Key.NotFound1]: 'Página no encontrada~',
+  [Key.NotFound2]: 'Volver a inicio',
+  [Key.NotFound3]: 'Página aleatoria',
 }
