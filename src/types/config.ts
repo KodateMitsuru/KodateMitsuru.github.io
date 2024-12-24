@@ -63,6 +63,10 @@ export type ProfileConfig = {
   }[]
 }
 
+export type FriendsConfig = {
+  friendsDefaultAvatar?: string
+}
+
 export type LicenseConfig = {
   enable: boolean
   name: string
