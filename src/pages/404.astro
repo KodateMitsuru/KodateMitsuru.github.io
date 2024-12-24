@@ -12,19 +12,15 @@ async function getrandpost() {
     return import.meta.env.PROD ? data.draft !== true : true
   })
   const specEntries = await getCollection('spec')
-  const randomIndex = Math.floor(Math.random() * (postEntries.length+specEntries.length+1))
-  if (randomIndex < postEntries.length) {
-    return getPostUrlBySlug(postEntries[randomIndex].slug)
-  }
-  if (randomIndex < postEntries.length+specEntries.length) {
-    return `/${specEntries[randomIndex-postEntries.length].slug}`
-  }
-  return '/'
-}
-
-const randurl = await getrandpost()
-
+const postEntriesUrl = postEntries.map((entry) => url(getPostUrlBySlug(entry.slug)))
+const specEntriesUrl = specEntries.map((entry) => (url(entry.slug)))
+const allEntriesUrl = postEntriesUrl.concat(specEntriesUrl).concat([url('/')])
 ---
+<script define:vars={{allEntriesUrl}}>
+  window.onload = () => document.getElementById('randurl').addEventListener('mouseover', () => {
+    document.getElementById('randurl').href = allEntries[Math.floor(Math.random() * (allEntries.length))];
+  });
+</script>
 
 <MainGridLayout>
   <div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative mb-4">
@@ -49,7 +45,7 @@ const randurl = await getrandpost()
     </a>
 
       
-    <a href={url(randurl)} class:list={["w-full font-bold overflow-hidden active:scale-95"]}>
+    <a id="randurl" href="#" class:list={["w-full font-bold overflow-hidden active:scale-95"]}>
       <div class="btn-card rounded-2xl w-full h-[3.75rem] max-w-full px-4 flex items-center !justify-end gap-4">
           <div class="overflow-hidden transition overflow-ellipsis whitespace-nowrap max-w-[calc(100%_-_3rem)] text-black/75 dark:text-white/75">
             {i18n(I18nKey.NotFound3)}

@@ -3,6 +3,7 @@ import type {
   LicenseConfig,
   NavBarConfig,
   ProfileConfig,
+  FriendsConfig,
   SiteConfig,
 } from './types/config'
 import { LinkPreset } from './types/config'
@@ -76,6 +77,10 @@ export const profileConfig: ProfileConfig = {
       url: 'mailto:hh172834956@gamil.com',
     }
   ],
+}
+
+export const friendsConfig: FriendsConfig = {
+  friendsDefaultAvatar: 'assets/images/friends_avatar.png', // Relative to the /src directory. Relative to the /public directory if it starts with '/'
 }
 
 export const licenseConfig: LicenseConfig = {

@@ -8,10 +8,12 @@ import I18nKey from '../i18n/i18nKey'
 import Markdown from '@components/misc/Markdown.astro'
 import Comment from '../components/comment/index.astro'
 import ImageWrapper from '../components/misc/ImageWrapper.astro'
+import { friendsConfig } from '../config'
 const friendsPost = await getEntry('spec', 'friends')
 
 const { Content } = await friendsPost.render()
 
+const config = friendsConfig
 const items = [
 
 ]
@@ -28,7 +30,7 @@ const items = [
                     <div class="btn-card rounded-2xl w-full h-auto max-w-full px-4 flex items-center !justify-end gap-4">
                         <div class="flex flex-nowrap items-stretch h-28 gap-4 rounded-[var(--radius-large)]">
                             <div class="w-28 h-28 flex-shrink-0 rounded-lg overflow-hidden bg-zinc-200 dark:bg-zinc-900">
-                                <ImageWrapper src="https://img.moegirl.org.cn/common/b/b7/Transparent_Akkarin.jpg" alt="site avatar" class="w-full h-full object-cover" />
+                                <ImageWrapper src={config.friendsDefaultAvatar || ""} alt="site avatar" class="w-full h-full object-cover" />
                             </div>
                         </div>
                         <div class="grow w-full">
