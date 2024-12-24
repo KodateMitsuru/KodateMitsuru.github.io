@@ -17,7 +17,7 @@ const allEntriesUrl = postEntriesUrl.concat(specEntriesUrl).concat([url('/')])
 ---
 <script define:vars={{allEntriesUrl}}>
   window.onload = () => document.getElementById('randurl').addEventListener('mouseover', () => {
-    document.getElementById('randurl').href = allEntries[Math.floor(Math.random() * (allEntries.length))];
+    document.getElementById('randurl').href = allEntriesUrl[Math.floor(Math.random() * (allEntriesUrl.length))];
   });
 </script>
 
