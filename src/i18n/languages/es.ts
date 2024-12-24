@@ -5,6 +5,7 @@ export const es: Translation = {
   [Key.home]: 'Inicio',
   [Key.about]: 'Sobre mí',
   [Key.archive]: 'Archivo',
+  [Key.friends]: 'Amigos',
   [Key.search]: 'Buscar',
 
   [Key.tags]: 'Etiquetas',
@@ -39,6 +40,9 @@ export const es: Translation = {
   [Key.author]: 'Autor',
   [Key.publishedAt]: 'Publicado el',
   [Key.license]: 'Licencia',
+
+  [Key.friendsnotfound0]: 'Amigos de fantasia',
+  [Key.friendsnotfound1]: 'NaN',
 
   [Key.NotFound0]: 'Gato',
   [Key.NotFound1]: 'Página no encontrada~',

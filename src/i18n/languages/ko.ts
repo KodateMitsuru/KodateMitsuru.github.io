@@ -5,6 +5,7 @@ export const ko: Translation = {
   [Key.home]: '홈',
   [Key.about]: '소개',
   [Key.archive]: '아카이브',
+  [Key.friends]: '친구들',
   [Key.search]: '검색',
 
   [Key.tags]: '태그',
@@ -39,6 +40,9 @@ export const ko: Translation = {
   [Key.author]: '저자',
   [Key.publishedAt]: '게시일',
   [Key.license]: '라이선스',
+
+  [Key.friendsnotfound0]: '친구를 찾을 수 없습니다',
+  [Key.friendsnotfound1]: 'NaN',
 
   [Key.NotFound0]: '고양이',
   [Key.NotFound1]: '페이지를 찾을 수 없습니다~',

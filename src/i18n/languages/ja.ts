@@ -5,6 +5,7 @@ export const ja: Translation = {
   [Key.home]: 'Home',
   [Key.about]: 'About',
   [Key.archive]: 'Archive',
+  [Key.friends]: 'Friends',
   [Key.search]: '検索',
 
   [Key.tags]: 'タグ',
@@ -39,6 +40,9 @@ export const ja: Translation = {
   [Key.author]: '作者',
   [Key.publishedAt]: '公開日',
   [Key.license]: 'ライセンス',
+
+  [Key.friendsnotfound0]: '友達が見つかりません',
+  [Key.friendsnotfound1]: 'NaN',
 
   [Key.NotFound0]: '猫',
   [Key.NotFound1]: 'ページが見つかりません～',
