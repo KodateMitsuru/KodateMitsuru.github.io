@@ -5,15 +5,21 @@ import { url, getPostUrlBySlug } from '@utils/url-utils'
 import { Icon } from 'astro-icon/components'
 import I18nKey from '@i18n/i18nKey'
 import { i18n } from '@i18n/translation'
-import { Image } from 'astro:assets'
+import ImageWrapper from '../components/misc/ImageWrapper.astro'
 
 async function getrandpost() {
-  const blogEntries = await getCollection('posts', ({ data }) => {
+  const postEntries = await getCollection('posts', ({ data }) => {
     return import.meta.env.PROD ? data.draft !== true : true
   })
-
-  const randomIndex = Math.floor(Math.random() * blogEntries.length)
-  return getPostUrlBySlug(blogEntries[randomIndex].slug)
+  const specEntries = await getCollection('spec')
+  const randomIndex = Math.floor(Math.random() * (postEntries.length+specEntries.length+1))
+  if (randomIndex < postEntries.length) {
+    return getPostUrlBySlug(postEntries[randomIndex].slug)
+  }
+  if (randomIndex < postEntries.length+specEntries.length) {
+    return `/${specEntries[randomIndex-postEntries.length].slug}`
+  }
+  return '/'
 }
 
 const randurl = await getrandpost()
@@ -28,7 +34,7 @@ const randurl = await getrandpost()
           <p class="text-[5rem] font-bold">404</p>
           <p class="text-[2rem]"><del>{i18n(I18nKey.NotFound0)}</del>{i18n(I18nKey.NotFound1)}</p>
         </div>
-        <Image inferSize={true} src="https://http.cat/images/404.jpg" alt="404 Not Found" class="rounded-[var(--radius-large)] w-1/2 h-auto mt-4" style="object-fit: cover;" />
+        <ImageWrapper src="https://http.cat/images/404.jpg" alt="404 Not Found" class="rounded-[var(--radius-large)] w-1/2 h-auto mt-4" />
       </div>
     </div>
   </div>

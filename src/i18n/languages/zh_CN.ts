@@ -5,6 +5,7 @@ export const zh_CN: Translation = {
   [Key.home]: '主页',
   [Key.about]: '关于',
   [Key.archive]: '归档',
+  [Key.friends]: '友链',
   [Key.search]: '搜索',
 
   [Key.tags]: '标签',
@@ -39,6 +40,9 @@ export const zh_CN: Translation = {
   [Key.author]: '作者',
   [Key.publishedAt]: '发布于',
   [Key.license]: '许可协议',
+
+  [Key.friendsnotfound0]: '幻想朋友',
+  [Key.friendsnotfound1]: 'NaN',
 
   [Key.NotFound0]: '猫',
   [Key.NotFound1]: '页面不见了～',

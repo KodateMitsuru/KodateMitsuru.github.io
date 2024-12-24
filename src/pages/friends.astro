@@ -1,0 +1,63 @@
+---
+
+import MainGridLayout from '../layouts/MainGridLayout.astro'
+import { Icon } from 'astro-icon/components'
+import { getEntry } from 'astro:content'
+import { i18n } from '../i18n/translation'
+import I18nKey from '../i18n/i18nKey'
+import Markdown from '@components/misc/Markdown.astro'
+import Comment from '../components/comment/index.astro'
+import ImageWrapper from '../components/misc/ImageWrapper.astro'
+const friendsPost = await getEntry('spec', 'friends')
+
+const { Content } = await friendsPost.render()
+
+const items = [
+
+]
+---
+
+<MainGridLayout title={i18n(I18nKey.friends)} description={i18n(I18nKey.friends)}>
+    <div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative min-h-32">
+        <div class="card-base z-10 px-9 py-6 relative w-full ">
+            <Markdown class="mt-2">
+                <Content />
+            </Markdown>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-6 gap-y-8 my-4">
+                {items.length === 0 ? (
+                    <div class="btn-card rounded-2xl w-full h-auto max-w-full px-4 flex items-center !justify-end gap-4">
+                        <div class="flex flex-nowrap items-stretch h-28 gap-4 rounded-[var(--radius-large)]">
+                            <div class="w-28 h-28 flex-shrink-0 rounded-lg overflow-hidden bg-zinc-200 dark:bg-zinc-900">
+                                <ImageWrapper src="https://img.moegirl.org.cn/common/b/b7/Transparent_Akkarin.jpg" alt="site avatar" class="w-full h-full object-cover" />
+                            </div>
+                        </div>
+                        <div class="grow w-full">
+                            <div class="font-bold transition text-lg text-neutral-900 dark:text-neutral-100 mb-1">{i18n(I18nKey.friendsnotfound0)}</div>
+                            <div class="text-50 text-sm font-medium">{i18n(I18nKey.friendsnotfound1)}</div>
+                        </div>
+                        <Icon name="material-symbols:chevron-right-rounded" class="text-[9rem] text-[var(--primary)]" />
+                    </div>
+                ) : (
+                    items.map((item) => (   
+                        <a href={item.siteurl} target="_blank" rel="noopener noreferrer" class:list={["w-full font-bold overflow-hidden active:scale-95"]}>
+                            <div class="btn-card rounded-2xl w-full h-auto max-w-full px-4 flex items-center !justify-end gap-4">
+                                <div class="flex flex-nowrap items-stretch h-28 gap-4 rounded-[var(--radius-large)]">
+                                    <div class="w-28 h-28 flex-shrink-0 rounded-lg overflow-hidden bg-zinc-200 dark:bg-zinc-900">
+                                        <ImageWrapper src={item.imgurl} alt="site avatar" class="w-full h-full object-cover" />
+                                    </div>
+                                </div>
+                                <div class="grow w-full">
+                                    <div class="font-bold transition text-lg text-neutral-900 dark:text-neutral-100 mb-1">{item.title}</div>
+                                    <div class="text-50 text-sm font-medium">{item.desc}</div>
+                                </div>
+                                <Icon name="material-symbols:chevron-right-rounded" class="text-[9rem] text-[var(--primary)]" />
+                            </div>
+                        </a>
+                    ))
+                )}
+            </div>  
+        </div>
+    </div>
+    <div class="flex flex-col md:flex-row justify-between mb-4 gap-4 overflow-hidden w-full"></div>
+    <Comment />
+</MainGridLayout>

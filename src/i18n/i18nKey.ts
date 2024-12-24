@@ -2,6 +2,7 @@ enum I18nKey {
   home = 'home',
   about = 'about',
   archive = 'archive',
+  friends = 'friends',
   search = 'search',
 
   tags = 'tags',
@@ -36,6 +37,9 @@ enum I18nKey {
   author = 'author',
   publishedAt = 'publishedAt',
   license = 'license',
+
+  friendsnotfound0 = 'friendsnotfound0',
+  friendsnotfound1 = 'friendsnotfound1',
 
   NotFound0 = 'NotFound0',
   NotFound1 = 'NotFound1',

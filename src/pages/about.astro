@@ -6,7 +6,7 @@ import { getEntry } from 'astro:content'
 import { i18n } from '../i18n/translation'
 import I18nKey from '../i18n/i18nKey'
 import Markdown from '@components/misc/Markdown.astro'
-
+import Comment from '../components/comment/index.astro'
 const aboutPost = await getEntry('spec', 'about')
 
 const { Content } = await aboutPost.render()
@@ -19,4 +19,6 @@ const { Content } = await aboutPost.render()
             </Markdown>
         </div>
     </div>
+    <div class="flex flex-col md:flex-row justify-between mb-4 gap-4 overflow-hidden w-full"></div>
+    <Comment />
 </MainGridLayout>
