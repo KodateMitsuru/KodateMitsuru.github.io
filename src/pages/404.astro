@@ -7,13 +7,12 @@ import I18nKey from '@i18n/i18nKey'
 import { i18n } from '@i18n/translation'
 import ImageWrapper from '../components/misc/ImageWrapper.astro'
 
-async function getrandpost() {
-  const postEntries = await getCollection('posts', ({ data }) => {
-    return import.meta.env.PROD ? data.draft !== true : true
-  })
-  const specEntries = await getCollection('spec')
+const postEntries = await getCollection('posts', ({ data }) => {
+  return import.meta.env.PROD ? data.draft !== true : true
+})
+const specEntries = await getCollection('spec')
 const postEntriesUrl = postEntries.map((entry) => url(getPostUrlBySlug(entry.slug)))
-const specEntriesUrl = specEntries.map((entry) => (url(entry.slug)))
+const specEntriesUrl = specEntries.map((entry) => url(entry.slug))
 const allEntriesUrl = postEntriesUrl.concat(specEntriesUrl).concat([url('/')])
 ---
 <script define:vars={{allEntriesUrl}}>
