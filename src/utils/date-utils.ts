@@ -3,7 +3,7 @@ export function formatDateToYYYYMMDD(date: Date): string {
     year: 'numeric',
     month: '2-digit',
     day: '2-digit',
-    timeZone: 'Asia/Shanghai'
+    timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone
   };
 
   const formattedDate = new Intl.DateTimeFormat('zh-CN', options).format(date);
