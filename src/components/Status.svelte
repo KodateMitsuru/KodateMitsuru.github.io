@@ -4,6 +4,7 @@
     import { onMount, onDestroy } from 'svelte'
     
     let statu = $state("-1")
+    let prevstatu = $state("-1")
     const refreshInterval = 10000
     
     async function updatePageViews() {
@@ -28,7 +29,10 @@
           } else {
             const { status } = await response.json()
             statu = status
-            
+            if (statu === "0") {
+              const { prevstatus } = await response.json()
+              prevstatu = prevstatus
+            }
           }
         } catch (error) {
           console.error('Error fetching status:', error)
@@ -51,6 +55,7 @@
   {i18n(I18nKey.status)}: {i18n(I18nKey.status1)}
 {:else if statu === "0"}
   {i18n(I18nKey.status)}: {i18n(I18nKey.status0)}
+  {i18n(I18nKey.prevstatus)}: {prevstatu}
 {:else}
   {i18n(I18nKey.status)}: {statu}
 {/if}
