@@ -48,4 +48,7 @@ export const ko: Translation = {
   [Key.NotFound1]: '페이지를 찾을 수 없습니다~',
   [Key.NotFound2]: '홈으로',
   [Key.NotFound3]: '랜덤 페이지로',
+
+  [Key.status]: '현재',
+  [Key.status0]: '죽었다',
 }

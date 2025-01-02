@@ -48,4 +48,7 @@ export const es: Translation = {
   [Key.NotFound1]: 'Página no encontrada~',
   [Key.NotFound2]: 'Volver a inicio',
   [Key.NotFound3]: 'Página aleatoria',
+
+  [Key.status]: 'Está ahora',
+  [Key.status0]: 'muerto',
 }

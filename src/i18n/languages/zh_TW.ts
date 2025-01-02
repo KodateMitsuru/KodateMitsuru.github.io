@@ -48,4 +48,7 @@ export const zh_TW: Translation = {
   [Key.NotFound1]: '頁面不見了～',
   [Key.NotFound2]: '返回首頁',
   [Key.NotFound3]: '來個隨機頁面',
+
+  [Key.status]: '現在在',
+  [Key.status0]: '似了',
 }
