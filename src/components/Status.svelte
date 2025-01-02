@@ -29,7 +29,7 @@
           } else {
             const { status } = await response.json()
             statu = status
-            if (statu === "0") {
+            if (statu == "0") {
               const { prevstatus } = await response.json()
               prevstatu = prevstatus
             }
