@@ -27,10 +27,9 @@
           if (!response.ok) {
             statu = "0"
           } else {
-            const { status } = await response.json()
+            const { status, prevstatus } = await response.json()
             statu = status
-            if (statu == "0") {
-              const { prevstatus } = await response.json()
+            if (status === "0") {
               prevstatu = prevstatus
             }
           }
@@ -54,7 +53,7 @@
 {#if statu === "-1"}
   {i18n(I18nKey.status)}: {i18n(I18nKey.status1)}
 {:else if statu === "0"}
-  {i18n(I18nKey.status)}: {i18n(I18nKey.status0)}
+  {i18n(I18nKey.status)}: {i18n(I18nKey.status0)} <br>
   {i18n(I18nKey.prevstatus)}: {prevstatu}
 {:else}
   {i18n(I18nKey.status)}: {statu}
