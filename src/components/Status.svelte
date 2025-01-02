@@ -47,7 +47,7 @@
     })
 
 </script>
-{#if statu === "1"}
+{#if statu === "-1"}
   {i18n(I18nKey.status)}: {i18n(I18nKey.status1)}
 {:else if statu === "0"}
   {i18n(I18nKey.status)}: {i18n(I18nKey.status0)}
