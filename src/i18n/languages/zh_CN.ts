@@ -48,4 +48,7 @@ export const zh_CN: Translation = {
   [Key.NotFound1]: '页面不见了～',
   [Key.NotFound2]: '返回主页',
   [Key.NotFound3]: '来个随机页面',
+
+  [Key.status]: '现在在',
+  [Key.status0]: '似了',
 }

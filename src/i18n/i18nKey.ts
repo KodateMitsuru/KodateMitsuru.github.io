@@ -45,6 +45,9 @@ enum I18nKey {
   NotFound1 = 'NotFound1',
   NotFound2 = 'NotFound2',
   NotFound3 = 'NotFound3',
+
+  status = 'status',
+  status0 = 'status0',
 }
 
 export default I18nKey
