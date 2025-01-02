@@ -49,7 +49,8 @@ export const en: Translation = {
   [Key.NotFound2]: 'Back to home',
   [Key.NotFound3]: 'Random page',
 
-  [Key.status]: 'Now at',
+  [Key.status]: 'Now',
   [Key.status0]: 'died',
   [Key.status1]: 'Loading...',
+  [Key.prevstatus]: 'prev',
 }

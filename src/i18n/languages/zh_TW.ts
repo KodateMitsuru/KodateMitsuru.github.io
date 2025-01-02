@@ -52,4 +52,5 @@ export const zh_TW: Translation = {
   [Key.status]: '現在在',
   [Key.status0]: '似了',
   [Key.status1]: 'Loading...',
+  [Key.prevstatus]: '似前在',
 }

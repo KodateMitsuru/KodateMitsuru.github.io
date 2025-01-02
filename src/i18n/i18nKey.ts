@@ -49,6 +49,7 @@ enum I18nKey {
   status = 'status',
   status0 = 'status0',
   status1 = 'status1',
+  prevstatus = 'prevstatus',
 }
 
 export default I18nKey
