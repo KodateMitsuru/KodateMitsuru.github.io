@@ -51,4 +51,5 @@ export const en: Translation = {
 
   [Key.status]: 'Now at',
   [Key.status0]: 'died',
+  [Key.status1]: 'Loading...',
 }
