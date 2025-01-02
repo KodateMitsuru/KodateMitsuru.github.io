@@ -53,4 +53,11 @@ export const ko: Translation = {
   [Key.status0]: '죽었다',
   [Key.status1]: '로딩 중...',
   [Key.prevstatus]: '이전',
+  [Key.difftime]: '지난',
+  [Key.year]: '년',
+  [Key.month]: '개월',
+  [Key.day]: '일',
+  [Key.hour]: '시간',
+  [Key.minute]: '분',
+  [Key.second]: '초',
 }

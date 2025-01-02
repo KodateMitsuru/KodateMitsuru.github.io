@@ -53,4 +53,11 @@ export const zh_CN: Translation = {
   [Key.status0]: '似了',
   [Key.status1]: 'Loading...',
   [Key.prevstatus]: '似前在',
+  [Key.difftime]: '似了有',
+  [Key.year]: '年',
+  [Key.month]: '月',
+  [Key.day]: '天',
+  [Key.hour]: '小时',
+  [Key.minute]: '分钟',
+  [Key.second]: '秒',
 }

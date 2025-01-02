@@ -53,4 +53,11 @@ export const es: Translation = {
   [Key.status0]: 'muerto',
   [Key.status1]: 'Cargando...',
   [Key.prevstatus]: 'anterior',
+  [Key.difftime]: 'pasado',
+  [Key.year]: 'año',
+  [Key.month]: 'mes',
+  [Key.day]: 'día',
+  [Key.hour]: 'hora',
+  [Key.minute]: 'minuto',
+  [Key.second]: 'segundo',
 }

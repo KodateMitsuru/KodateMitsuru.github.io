@@ -50,6 +50,13 @@ enum I18nKey {
   status0 = 'status0',
   status1 = 'status1',
   prevstatus = 'prevstatus',
+  difftime = 'difftime',
+  year = 'year',
+  month = 'month',
+  day = 'day',
+  hour = 'hour',
+  minute = 'minute',
+  second = 'second',
 }
 
 export default I18nKey
