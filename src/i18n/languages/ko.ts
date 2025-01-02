@@ -51,4 +51,5 @@ export const ko: Translation = {
 
   [Key.status]: '현재',
   [Key.status0]: '죽었다',
+  [Key.status1]: '로딩 중...',
 }

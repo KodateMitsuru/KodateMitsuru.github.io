@@ -3,7 +3,7 @@
     import { i18n } from '@i18n/translation'
     import { onMount, onDestroy } from 'svelte'
     
-    let statu = $state("0")
+    let statu = $state("-1")
     const refreshInterval = 10000
     
     async function updatePageViews() {
@@ -31,7 +31,7 @@
             
           }
         } catch (error) {
-          console.error('Error fetching site views:', error)
+          console.error('Error fetching status:', error)
             statu = "0"
         }
       }
@@ -47,7 +47,9 @@
     })
 
 </script>
-{#if statu === "0"}
+{#if statu === "1"}
+  {i18n(I18nKey.status)}: {i18n(I18nKey.status1)}
+{:else if statu === "0"}
   {i18n(I18nKey.status)}: {i18n(I18nKey.status0)}
 {:else}
   {i18n(I18nKey.status)}: {statu}

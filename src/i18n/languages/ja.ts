@@ -51,4 +51,5 @@ export const ja: Translation = {
 
   [Key.status]: '今',
   [Key.status0]: '死んだ',
+  [Key.status1]: 'ロード中...',
 }
