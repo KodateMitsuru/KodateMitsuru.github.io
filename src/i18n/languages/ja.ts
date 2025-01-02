@@ -53,4 +53,11 @@ export const ja: Translation = {
   [Key.status0]: '死んだ',
   [Key.status1]: 'ロード中...',
   [Key.prevstatus]: '前',
+  [Key.difftime]: '経過',
+  [Key.year]: '年',
+  [Key.month]: 'ヶ月',
+  [Key.day]: '日',
+  [Key.hour]: '時間',
+  [Key.minute]: '分',
+  [Key.second]: '秒',
 }
