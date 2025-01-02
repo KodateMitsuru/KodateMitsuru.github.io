@@ -13,7 +13,7 @@
     let minutes = $state(0)
     let seconds = $state(0)
 
-    const refreshInterval = 10000
+    const refreshInterval = 1000
     
     async function updatePageViews() {
       if (import.meta.env.DEV) {
