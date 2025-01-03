@@ -64,7 +64,7 @@
 </script>
 {#if statu === "-1"}
   {i18n(I18nKey.status)}: {i18n(I18nKey.status1)}
-{:else if difftimestamp > 10000}
+{:else if difftimestamp > 600000}
   {i18n(I18nKey.status)}: {i18n(I18nKey.status0)} <br>
   {i18n(I18nKey.prevstatus)}: {statu} <br>
   {i18n(I18nKey.difftime)}: 
