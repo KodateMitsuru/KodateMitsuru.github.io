@@ -4,8 +4,7 @@
     import { onMount, onDestroy } from 'svelte'
     
     let statu = $state("-1")
-    let prevstatu = $state("-1")
-    let difftime = $state(new Date(0))
+    let difftimestamp = $state(0)
     let year = $state(0)
     let months = $state(0)
     let days = $state(0)
@@ -17,8 +16,9 @@
     
     async function updatePageViews() {
       if (import.meta.env.DEV) {
-        statu = "0"
-        console.log('DEV mode, status set to 0')
+        statu = "黄油"
+        difftimestamp = 0
+        console.log('DEV mode, status set to 黄油，difftimestamp set to 0')
       } else {
         try {
 
@@ -32,25 +32,22 @@
             }
           )
     
-          if (!response.ok) {
-            statu = "0"
-          } else {
-            const { status, prevstatus, prevtime } = await response.json()
+          if (response.ok) {
+            const { status, modtime } = await response.json()
             statu = status
-            if (status === "0") {
-              prevstatu = prevstatus
-              difftime = new Date(prevtime)
-              year = difftime.getFullYear() - 1970
-              months = difftime.getUTCMonth()
-              days = difftime.getUTCDate() - 1
-              hours = difftime.getUTCHours()
-              minutes = difftime.getUTCMinutes()
-              seconds = difftime.getUTCSeconds()
-            }
+            difftimestamp = Date.now() - modtime
+            const difftime = new Date(difftimestamp)
+            year = difftime.getFullYear() - 1970
+            months = difftime.getUTCMonth()
+            days = difftime.getUTCDate() - 1
+            hours = difftime.getUTCHours()
+            minutes = difftime.getUTCMinutes()
+            seconds = difftime.getUTCSeconds()
+          } else {
+            console.error('Error fetching status:', response)
           }
         } catch (error) {
           console.error('Error fetching status:', error)
-            statu = "0"
         }
       }
     }
@@ -67,9 +64,9 @@
 </script>
 {#if statu === "-1"}
   {i18n(I18nKey.status)}: {i18n(I18nKey.status1)}
-{:else if statu === "0"}
+{:else if difftimestamp > 10000}
   {i18n(I18nKey.status)}: {i18n(I18nKey.status0)} <br>
-  {i18n(I18nKey.prevstatus)}: {prevstatu} <br>
+  {i18n(I18nKey.prevstatus)}: {statu} <br>
   {i18n(I18nKey.difftime)}: 
   {#if year > 0}{year} {i18n(I18nKey.year)} {/if}
   {#if months > 0}{months} {i18n(I18nKey.month)} {/if}
