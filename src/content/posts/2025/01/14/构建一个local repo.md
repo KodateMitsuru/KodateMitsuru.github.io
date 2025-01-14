@@ -10,7 +10,7 @@ lang: ''
 ---
 # 起因
 
-Archlinux用了也快有五六年了，AUR是每天都要打交道的东西<del>(指天天`paru`)<del>但是aur里面的东西不一定都是好的，很多PKGBUILD早就过时了，或者我有什么神奇需求，比如Kernel Lockdown啦，就得对PKGBUILD进行一番改造，这到没什么，paru有一个自动合并的功能，只要你对修改后的仓库commit过，就会自动帮你合并以后的更改
+Archlinux用了也快有五六年了，AUR是每天都要打交道的东西(指天天`paru`)但是aur里面的东西不一定都是好的，很多PKGBUILD早就过时了，或者我有什么神奇需求，比如Kernel Lockdown啦，就得对PKGBUILD进行一番改造，这到没什么，paru有一个自动合并的功能，只要你对修改后的仓库commit过，就会自动帮你合并以后的更改
 
 但是在paru里，aur的优先级默认是最低，而且改不了，因为貌似是硬编码的，因此如果你像我一样有什么archlinuxcn,chaotic-aur,arch4edu,blackarch的话，默认就会从它们那里更新未修改的版本，然后你的自定义就没了
 
