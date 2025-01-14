@@ -50,6 +50,11 @@ export const navBarConfig: NavBarConfig = {
       url: 'https://github.com/KodateMitsuru',     // Internal links should not include the base path, as it is automatically added
       external: true,                               // Show an external link icon and will open in a new tab
     },
+    {
+      name: 'Repo',
+      url: 'https://repo.kodatemitsuru.com',     // Internal links should not include the base path, as it is automatically added
+      external: true,                               // Show an external link icon and will open in a new tab
+    },
   ],
 }
 
