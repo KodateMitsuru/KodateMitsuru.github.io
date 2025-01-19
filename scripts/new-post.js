@@ -52,7 +52,7 @@ const targetDir = `./src/content/posts/${getDateStringForPath()}`
 const fullPath = path.join(targetDir, fileName)
 
 if (fs.existsSync(fullPath)) {
-  console.error(`Error: File ${fullPath} already exists`)
+  console.error(`Error: File ${fullPath} already exists `)
   process.exit(1)
 }
 
