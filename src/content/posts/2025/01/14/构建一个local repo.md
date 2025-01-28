@@ -33,7 +33,7 @@ pacman 读取 `/etc/pacman.conf` 的repo后会根据从上到下的顺序设定�
 
 事实上里面就有一个例子，取消注释后选取一个你喜欢的位置即可
 
-```conf
+```
 [custom]
 SigLevel = Optional TrustAll
 Server = file:///home/admin/.local/share/LocalRepo/
@@ -43,7 +43,7 @@ Server = file:///home/admin/.local/share/LocalRepo/
 
 在`/etc/paru.conf`里面同样启用，你也可以在其他合法配置文件位置进行
 
-```conf
+```
 LocalRepo=custom
 #Chroot
 #Sign
@@ -84,7 +84,7 @@ sudo pacman-key --lsign-key key-id
 
 然后可以启用paru里面的签名
 
-```conf
+```
 LocalRepo=custom
 #Chroot
 Sign
