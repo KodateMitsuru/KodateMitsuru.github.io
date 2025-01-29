@@ -3,7 +3,7 @@ title: AMD不语，只是一味faker我的yolo
 published: 2025-01-28 19:44:49 +08:00
 description: ''
 image: ''
-tags: [amd,rocm,migraphx,yolo,dnn]
+tags: [amd,rocm,migraphx,yolo,dnn,robomaster]
 category: 'coding'
 draft: false 
 lang: ''
@@ -99,11 +99,6 @@ export HSA_OVERRIDE_GFX_VERSION=11.0.0
 
 ### MIGraphX documentation
 
-2024-10-01
-
-2 min read time
-
-Applies to Linux
 
 MIGraphX is a graph inference engine and graph compiler. MIGraphX accelerates machine-learning models by leveraging several graph-level transformations and optimizations. These optimizations include:
 
