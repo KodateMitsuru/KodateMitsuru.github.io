@@ -73,31 +73,33 @@ function switchTheme() {
 }
 
 function loadButtonScript() {
+    // assign onclick instead of addEventListener to keep binding idempotent
+    // so re-running this on astro:after-swap does not stack duplicate listeners
     let switchBtn = document.getElementById("scheme-switch");
     if (switchBtn) {
-        switchBtn.addEventListener("click", function () {
+        switchBtn.onclick = function () {
             switchTheme()
-        });
+        };
     }
 
     let settingBtn = document.getElementById("display-settings-switch");
     if (settingBtn) {
-        settingBtn.addEventListener("click", function () {
+        settingBtn.onclick = function () {
             let settingPanel = document.getElementById("display-setting");
             if (settingPanel) {
                 settingPanel.classList.toggle("float-panel-closed");
             }
-        });
+        };
     }
 
     let menuBtn = document.getElementById("nav-menu-switch");
     if (menuBtn) {
-        menuBtn.addEventListener("click", function () {
+        menuBtn.onclick = function () {
             let menuPanel = document.getElementById("nav-menu-panel");
             if (menuPanel) {
                 menuPanel.classList.toggle("float-panel-closed");
             }
-        });
+        };
     }
 }
 

@@ -1,6 +1,6 @@
+import { unified } from "@astrojs/markdown-remark";
 import sitemap from "@astrojs/sitemap";
 import svelte from "@astrojs/svelte";
-import tailwind from "@astrojs/tailwind";
 import swup from "@swup/astro";
 import Compress from "astro-compress";
 import icon from "astro-icon";
@@ -24,11 +24,6 @@ export default defineConfig({
   site: "https://blog.kodatemitsuru.com/",
   trailingSlash: "ignore",
   integrations: [
-    tailwind(
-        {
-          nesting: true,
-        }
-    ),
     swup({
       theme: false,
       animationClass: "transition-swup-", // see https://swup.js.org/options/#animationselector
@@ -45,10 +40,10 @@ export default defineConfig({
     }),
     icon({
       include: {
-        "preprocess: vitePreprocess(),": ["*"],
         "fa6-brands": ["*"],
         "fa6-regular": ["*"],
         "fa6-solid": ["*"],
+        "material-symbols": ["*"],
       },
     }),
     svelte(),
@@ -62,58 +57,64 @@ export default defineConfig({
     }),
   ],
   markdown: {
-    remarkPlugins: [
-      remarkMath,
-      remarkReadingTime,
-      remarkExcerpt,
-      remarkGithubAdmonitionsToDirectives,
-      remarkDirective,
-      remarkSectionize,
-      parseDirectiveNode,
-    ],
-    rehypePlugins: [
-      rehypeKatex,
-      rehypeSlug,
-      [
-        rehypeComponents,
-        {
-          components: {
-            github: GithubCardComponent,
-            note: (x, y) => AdmonitionComponent(x, y, "note"),
-            tip: (x, y) => AdmonitionComponent(x, y, "tip"),
-            important: (x, y) => AdmonitionComponent(x, y, "important"),
-            caution: (x, y) => AdmonitionComponent(x, y, "caution"),
-            warning: (x, y) => AdmonitionComponent(x, y, "warning"),
-          },
-        },
+    processor: unified({
+      remarkPlugins: [
+        remarkMath,
+        remarkReadingTime,
+        remarkExcerpt,
+        remarkGithubAdmonitionsToDirectives,
+        remarkDirective,
+        remarkSectionize,
+        parseDirectiveNode,
       ],
-      [
-        rehypeAutolinkHeadings,
-        {
-          behavior: "append",
-          properties: {
-            className: ["anchor"],
-          },
-          content: {
-            type: "element",
-            tagName: "span",
-            properties: {
-              className: ["anchor-icon"],
-              "data-pagefind-ignore": true,
+      rehypePlugins: [
+        rehypeKatex,
+        rehypeSlug,
+        [
+          rehypeComponents,
+          {
+            components: {
+              github: GithubCardComponent,
+              note: (x, y) => AdmonitionComponent(x, y, "note"),
+              tip: (x, y) => AdmonitionComponent(x, y, "tip"),
+              important: (x, y) => AdmonitionComponent(x, y, "important"),
+              caution: (x, y) => AdmonitionComponent(x, y, "caution"),
+              warning: (x, y) => AdmonitionComponent(x, y, "warning"),
             },
-            children: [
-              {
-                type: "text",
-                value: "#",
-              },
-            ],
           },
-        },
+        ],
+        [
+          rehypeAutolinkHeadings,
+          {
+            behavior: "append",
+            properties: {
+              className: ["anchor"],
+            },
+            content: {
+              type: "element",
+              tagName: "span",
+              properties: {
+                className: ["anchor-icon"],
+                "data-pagefind-ignore": true,
+              },
+              children: [
+                {
+                  type: "text",
+                  value: "#",
+                },
+              ],
+            },
+          },
+        ],
       ],
-    ],
+    }),
   },
   vite: {
+    css: {
+      transformer: "postcss",
+    },
     build: {
+      cssMinify: false,
       rollupOptions: {
         onwarn(warning, warn) {
           // temporarily suppress this warning
@@ -129,6 +130,6 @@ export default defineConfig({
     },
   },
   image: {
-    domains: ["s2.loli.net"],
+    domains: ["s2.loli.net", "http.cat", "avatars.githubusercontent.com"],
   },
 });

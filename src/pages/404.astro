@@ -11,8 +11,8 @@ const postEntries = await getCollection('posts', ({ data }) => {
   return import.meta.env.PROD ? data.draft !== true : true
 })
 const specEntries = await getCollection('spec')
-const postEntriesUrl = postEntries.map((entry) => url(getPostUrlBySlug(entry.slug)))
-const specEntriesUrl = specEntries.map((entry) => url(entry.slug))
+const postEntriesUrl = postEntries.map((entry) => url(getPostUrlBySlug(entry.id)))
+const specEntriesUrl = specEntries.map((entry) => url(entry.id))
 const allEntriesUrl = postEntriesUrl.concat(specEntriesUrl).concat([url('/')])
 ---
 <script define:vars={{allEntriesUrl}}>

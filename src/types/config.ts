@@ -1,4 +1,4 @@
-import type Giscus from 'giscus'
+import type * as Giscus from 'giscus'
 import type { AUTO_MODE, DARK_MODE, LIGHT_MODE } from '@constants/constants'
 
 export type SiteConfig = {
